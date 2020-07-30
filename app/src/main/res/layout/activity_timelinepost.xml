@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.TimelinepostActivity"
+    android:id="@+id/timeline_drawerlayout"
+    android:background="@android:color/white">
+
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/timeline_barlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/timeline_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@id/timeline_cardmsg"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:background="@drawable/searchbardesign"
+            android:gravity="center"
+            android:padding="3dp"
+            android:weightSum="2">
+
+
+            <EditText
+                android:layout_weight="1.8"
+                android:id="@+id/timeline_edtartist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search your artist"
+                android:gravity="start"
+                android:layout_marginStart="10dp"
+                android:textSize="17sp"
+                android:singleLine="true"
+                android:background="@null" />
+
+            <ImageView
+                android:layout_weight=".2"
+                android:id="@+id/timeline_imgsearch"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/searchicon"
+                android:layout_gravity="end"
+                android:padding="7dp"
+                />
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/timeline_cardmsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            app:cardElevation="5dp"
+            android:layout_centerVertical="true"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="10dp"
+            android:background="@android:color/white">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/navigation"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:background="@android:color/white"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/timeline_postrecyclerview"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_above="@+id/timeline_bnv"
+         android:layout_below="@id/timeline_barlayout"/>
+
+
+     <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/timeline_bnv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bnvdesign"
+            app:menu="@menu/menus"/>
+
+
+<!--    <include layout="@layout/bottomsheet_details"/>-->
+
+<!--    </RelativeLayout>-->
+
+</RelativeLayout>

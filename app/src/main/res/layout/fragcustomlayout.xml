@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <TextView
+        android:id="@+id/fraglineone"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F7A39E9E"/>
+
+    <TextView
+        android:id="@+id/frag_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Annasthesia"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/frag_profileimg"
+        android:layout_alignTop="@id/frag_profileimg"/>
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/frag_profileimg"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/profilethree"
+        android:layout_below="@id/fraglineone"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/frag_txtlines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I have read your blogs and they are absolutely fine and very good content . I really love it."
+        android:layout_toEndOf="@id/frag_profileimg"
+        android:layout_below="@id/frag_username"
+        android:textSize="15sp"
+        android:layout_marginStart="5dp"
+        android:maxLines="2"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/frag_txttime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:layout_below="@id/frag_txtlines"
+        android:text="51min ago"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/frag_profileimg"/>
+
+</RelativeLayout>

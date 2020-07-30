@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.LikesActivity"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/likes_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+
+
+        <EditText
+            android:id="@+id/likes_edtsearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search"
+            android:inputType="textPersonName"
+            android:singleLine="true"
+            android:drawableStart="@drawable/searchicon"
+            android:drawablePadding="10dp"
+            android:background="@drawable/bordersearchdesign"/>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/likes_txtlikes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="271 people liked you"
+        android:textSize="15sp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="start"
+        android:padding="10dp"
+        android:layout_margin="5dp"/>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/likes_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+</LinearLayout>

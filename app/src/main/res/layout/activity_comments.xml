@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.CommentsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/comment_barlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/comment_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/comment_comentsrecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comment_barlayout"
+        android:layout_above="@id/comment_postcommentlayout"/>
+
+
+    <RelativeLayout
+        android:id="@+id/comment_postcommentlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/commentborderdesign"
+        android:layout_margin="5dp">
+
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/comment_imgprofile"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/profileone"
+            android:layout_centerVertical="true"/>
+
+
+        <EditText
+            android:id="@+id/comment_edtcomment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Comment"
+            android:layout_toEndOf="@id/comment_imgprofile"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@id/comment_posttxt"
+            android:background="@null"
+            android:layout_marginStart="5dp"/>
+
+
+        <TextView
+            android:id="@+id/comment_posttxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/bluecolor"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            android:layout_marginEnd="5dp"/>
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

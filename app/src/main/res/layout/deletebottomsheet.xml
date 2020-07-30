@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lldeletebottomsheet"
+    android:padding="5dp">
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Chat?"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textColor="#CB2E302E"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CB2E302E"/>
+
+    <TextView
+        android:id="@+id/dl_deletetxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#3349E9"
+        android:gravity="center"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CB2E302E"/>
+
+    <TextView
+        android:id="@+id/dl_canceltxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textSize="16sp"
+        android:textColor="#CB2E302E"
+        android:gravity="center"
+        android:padding="10dp"/>
+
+
+
+
+</LinearLayout>

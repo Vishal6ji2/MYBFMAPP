@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:id="@+id/cucustom_relativelayout">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/cucustom_profileimg"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/profilethree"/>
+
+
+    <TextView
+        android:id="@+id/cucustom_chattername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mia Shroff"
+        android:textColor="@color/colorPrimary"
+        android:textSize="16sp"
+        android:layout_marginStart="5dp"
+        android:textStyle="bold"
+        android:layout_toEndOf="@id/cucustom_profileimg"
+        android:layout_alignTop="@id/cucustom_profileimg"/>
+
+
+    <TextView
+        android:id="@+id/cucustom_msgs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I Hope you find the best one like.I Hope you find the best one like.I Hope you find the best one like.I Hope you find the best one like"
+        android:layout_below="@id/cucustom_chattername"
+        android:layout_alignStart="@id/cucustom_chattername"
+        android:textSize="14sp"
+        android:layout_marginStart="5dp"
+        android:maxLines="2"
+        android:layout_toStartOf="@id/cucustom_time"/>
+
+    <TextView
+        android:id="@+id/cucustom_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="2m"
+        android:layout_below="@id/cucustom_chattername"/>
+
+</RelativeLayout>

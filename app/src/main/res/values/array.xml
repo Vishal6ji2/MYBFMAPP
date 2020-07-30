@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="sidebarmenunames">
+        <item>Settings</item>
+        <item>Saved</item>
+        <item>FAQ</item>
+        <item>Invite Friends</item>
+        <item />
+        <item>Log Out</item>
+    </string-array>
+
+    <array name="sidebarmenuicons">
+        <item>@drawable/settingicon</item>
+        <item>@drawable/savedicon</item>
+        <item>@drawable/savedicon</item>
+        <item>@drawable/menushare</item>
+        <item>0</item>
+        <item>@drawable/logout</item>
+    </array>
+
+
+</resources>

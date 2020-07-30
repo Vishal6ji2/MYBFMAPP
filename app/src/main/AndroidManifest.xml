@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.bfmapp">
+
+    <uses-permission android:name="android.hardware.camera2.full" />
+
+    <uses-feature android:name="android.hardware.camera2" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".OtherUsersProfileActivity"></activity>
+        <activity android:name=".Activities.CommentsActivity" />
+        <activity android:name=".Activities.LikesActivity" />
+        <activity android:name=".Activities.SelectedGroupUsersActivity" />
+        <activity android:name=".Activities.SelectGroupUsersActivity" />
+        <activity android:name=".Activities.NewChatActivity" />
+        <activity android:name=".Activities.ChatMessagesActivity" />
+        <activity android:name=".Activities.ChatUsersActivity" />
+        <activity android:name=".Activities.NotificationActivity" />
+        <activity
+            android:name=".Activities.CreatePostActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Activities.UsersSeeProfileActivity" />
+        <activity android:name=".Activities.EditUserProfileActivity" />
+        <activity
+            android:name=".Activities.UserProfileActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activities.TimelinepostActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name=".Activities.OtpActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activities.AddInfoActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Activities.SelectCategoryActivity" />
+        <activity
+            android:name=".Activities.SignUpActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".Activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

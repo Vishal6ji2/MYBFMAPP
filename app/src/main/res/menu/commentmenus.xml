@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="More" app:showAsAction="always" android:icon="@drawable/menuicons">
+
+        <menu>
+
+            <item android:id="@+id/cmenus_report" android:icon="@drawable/reporticon" android:title="Report" app:showAsAction="never" android:orderInCategory="100"/>
+
+            <item android:id="@+id/cmenus_share" android:icon="@drawable/shareicon" android:title="Share" app:showAsAction="never" android:orderInCategory="100"/>
+
+        </menu>
+
+    </item>
+
+</menu>

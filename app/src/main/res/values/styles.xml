@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="ActionBarTabTextStyle.Tabtheme" parent="@android:style/Widget.Holo.ActionBar.TabText">
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+<!--    checkbox style-->
+    <style name="CustomCheckbox" parent="AppTheme">
+         <item name="android:button">@drawable/checkboxdrawable</item>
+         <item name="android:background">@android:color/transparent</item>
+    </style>
+
+</resources>
