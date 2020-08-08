@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="7dp"
+    android:background="?attr/selectableItemBackground">
+
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/fsl_profileimg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/profileone"/>
+
+
+    <TextView
+        android:id="@+id/fsl_txtusername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/fsl_profileimg"
+        android:text="Mia chronoza"
+        android:textColor="@color/colorPrimary"
+        android:layout_alignTop="@id/fsl_profileimg"
+        android:textSize="17sp"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/fsl_userlocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location :"
+        android:textColor="@color/colorPrimary"
+        android:layout_alignBottom="@id/fsl_profileimg"
+        android:layout_toEndOf="@id/fsl_profileimg"
+        android:layout_marginStart="5dp"/>
+
+
+    <TextView
+        android:id="@+id/fsl_userlocationtxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sydney"
+        android:textColor="@color/bluecolor"
+        android:layout_alignBottom="@id/fsl_profileimg"
+        android:layout_toEndOf="@id/fsl_userlocation"
+        android:layout_marginStart="5dp"/>
+
+
+
+</RelativeLayout>

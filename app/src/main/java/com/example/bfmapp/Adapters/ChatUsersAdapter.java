@@ -19,16 +19,18 @@ import com.example.bfmapp.Suitcases.ChatUsersSuitcase;
 import com.mikhaellopez.circularimageview.CircularImageView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class ChatUsersAdapter extends RecyclerView.Adapter<ChatUsersAdapter.ViewHolder> implements Filterable {
 
     Context context;
     ArrayList<ChatUsersSuitcase> usersSuitcaseArrayList = new ArrayList<>();
-    ArrayList<ChatUsersSuitcase> suitcaseArrayList = new ArrayList<>();
+    ArrayList<ChatUsersSuitcase> suitcaseArrayList;
 
     public ChatUsersAdapter(Context context, ArrayList<ChatUsersSuitcase> usersSuitcaseArrayList) {
         this.context = context;
         this.usersSuitcaseArrayList = usersSuitcaseArrayList;
+        suitcaseArrayList = new ArrayList<>(usersSuitcaseArrayList);
     }
 
     @NonNull
@@ -97,13 +99,12 @@ public class ChatUsersAdapter extends RecyclerView.Adapter<ChatUsersAdapter.View
 
             ArrayList<ChatUsersSuitcase> filterlist = new ArrayList<>();
 
-            if (constraint == null && constraint.length() == 0){
+            if (constraint.toString().isEmpty()){
                 filterlist.addAll(suitcaseArrayList);
             }else {
 
-                String pattern = constraint.toString().toLowerCase().trim();
                 for (ChatUsersSuitcase suitcase : suitcaseArrayList){
-                    if (suitcase.chattername.toLowerCase().contains(pattern)){
+                    if (suitcase.chattername.toLowerCase().contains(constraint.toString().toLowerCase())){
                         filterlist.add(suitcase);
                     }
                 }
@@ -120,7 +121,7 @@ public class ChatUsersAdapter extends RecyclerView.Adapter<ChatUsersAdapter.View
         protected void publishResults(CharSequence constraint, FilterResults results) {
 
             usersSuitcaseArrayList.clear();
-            usersSuitcaseArrayList.addAll((ArrayList<ChatUsersSuitcase>)results.values);
+            usersSuitcaseArrayList.addAll((Collection<? extends ChatUsersSuitcase>)results.values);
             notifyDataSetChanged();
         }
     };

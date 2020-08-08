@@ -27,7 +27,7 @@ public class ChatUsersActivity extends AppCompatActivity {
 
     RecyclerView curecyclerview;
 
-    ArrayList<ChatUsersSuitcase> usersSuitcaseArrayList = new ArrayList<>();
+   public static final ArrayList<ChatUsersSuitcase> usersSuitcaseArrayList = new ArrayList<>();
 
     ChatUsersAdapter chatUsersAdapter;
 
@@ -119,21 +119,15 @@ public class ChatUsersActivity extends AppCompatActivity {
                     return false;
                 }
 
+
                 @Override
                 public boolean onQueryTextChange(String newText) {
 
                     chatUsersAdapter.getFilter().filter(newText);
-
-
-                    return true;
+                    return false;
                 }
             });
-
-
             Toast.makeText(this, "Search Click work in Progress", Toast.LENGTH_SHORT).show();
-
-
-
         }
         return true;
     }

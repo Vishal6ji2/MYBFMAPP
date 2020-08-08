@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="5dp"
-    android:background="@drawable/bnvdesign"
     android:id="@+id/mm_llbottomsheet">
 
     <androidx.appcompat.widget.SwitchCompat

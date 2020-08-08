@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.FinalSearchActivity">
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/fs_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/fs_edtsearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/cancelicon"
+            android:background="@null"
+            android:hint="Search your artist"/>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+
+    <ImageView
+        android:id="@+id/fs_filterimg"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/filterimgicon"
+        android:layout_below="@id/fs_toolbar"
+        android:layout_alignParentEnd="true"
+        android:padding="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fs_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fs_filterimg" />
+
+</RelativeLayout>

@@ -65,8 +65,8 @@ public class LikedUsersAdapter extends RecyclerView.Adapter<LikedUsersAdapter.Vi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, OtherUsersProfileActivity.class);
-                intent.putExtra("likedname",likedUsersArrayList.get(position).likedusername);
-                intent.putExtra("likeduserimg",likedUsersArrayList.get(position).likedprofileimg);
+                intent.putExtra("username",likedUsersArrayList.get(position).likedusername);
+                intent.putExtra("userimg",likedUsersArrayList.get(position).likedprofileimg);
 
                 context.startActivity(intent);
             }

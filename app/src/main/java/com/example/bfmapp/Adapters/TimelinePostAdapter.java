@@ -87,13 +87,32 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
 
         holder.txtlocation.setText(postSuitcaseArrayList.get(position).ps_location);
 
+        postSuitcaseArrayList.get(position).ps_redheartimg = holder.imgredlike;
 
+        postSuitcaseArrayList.get(position).ps_blackheartimg = holder.imgblacklike;
+
+        postSuitcaseArrayList.get(position).ps_redheartimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                postSuitcaseArrayList.get(position).ps_redheartimg.setVisibility(View.INVISIBLE);
+                postSuitcaseArrayList.get(position).ps_blackheartimg.setVisibility(View.VISIBLE);
+            }
+        });
+
+        postSuitcaseArrayList.get(position).ps_blackheartimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                postSuitcaseArrayList.get(position).ps_blackheartimg.setVisibility(View.INVISIBLE);
+                postSuitcaseArrayList.get(position).ps_redheartimg.setVisibility(View.VISIBLE);
+            }
+        });
 
         holder.imgmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(context);
 
                 View bottomsheetview = LayoutInflater.from(context).inflate(R.layout.bottomsheet_details,holder.bslinearlayout);
 
@@ -101,6 +120,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "Item "+postSuitcaseArrayList.get(position).ps_name+" Blocked", Toast.LENGTH_SHORT).show();
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -108,6 +128,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "Item "+postSuitcaseArrayList.get(position).ps_name+" Blocked", Toast.LENGTH_SHORT).show();
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -115,6 +136,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "Item "+postSuitcaseArrayList.get(position).ps_name+" Blocked", Toast.LENGTH_SHORT).show();
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -122,6 +144,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "Item "+postSuitcaseArrayList.get(position).ps_name+" Blocked", Toast.LENGTH_SHORT).show();
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -129,6 +152,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "Item "+postSuitcaseArrayList.get(position).ps_name+" Blocked", Toast.LENGTH_SHORT).show();
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -136,6 +160,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "Item "+postSuitcaseArrayList.get(position).ps_name+" Blocked", Toast.LENGTH_SHORT).show();
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -143,7 +168,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
                     @Override
                     public void onClick(View v) {
                         Toast.makeText(context, "Item "+postSuitcaseArrayList.get(position).ps_name+" Blocked", Toast.LENGTH_SHORT).show();
-
+                        bottomSheetDialog.dismiss();
                     }
                 });
 
@@ -153,7 +178,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
             }
         });
 
-        holder.imgblacklike.setOnClickListener(new View.OnClickListener() {
+     /*   holder.imgblacklike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -171,7 +196,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
 
             }
         });
-
+*/
        /* holder.imgredlike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,24 +213,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
                 holder.imgredlike.setVisibility(View.GONE);}
         });
 */
-/*
 
-        holder.imgblacklike.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Toast.makeText(context, postSuitcaseArrayList.get(position).ps_name, Toast.LENGTH_SHORT).show();
-                return gestureDetector.onTouchEvent(event);
-            }
-        });
-
-        holder.imgredlike.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Toast.makeText(context, postSuitcaseArrayList.get(position).ps_name, Toast.LENGTH_SHORT).show();
-                return gestureDetector.onTouchEvent(event);
-            }
-        });
-*/
 
 
     }
@@ -232,7 +240,7 @@ public class TimelinePostAdapter extends RecyclerView.Adapter<TimelinePostAdapte
             imgpost = itemView.findViewById(R.id.post_imgpost);
             imgmenu = itemView.findViewById(R.id.post_imgmenu);
             imgblacklike = itemView.findViewById(R.id.post_imgblackheartlike);
-//            imgredlike = itemView.findViewById(R.id.post_imgblueheartlike);
+            imgredlike = itemView.findViewById(R.id.post_imgblueheartlike);
             imgcomment = itemView.findViewById(R.id.post_imgcomment);
             imgshare = itemView.findViewById(R.id.post_imgshare);
             imgbookmark = itemView.findViewById(R.id.post_imgbookmark);

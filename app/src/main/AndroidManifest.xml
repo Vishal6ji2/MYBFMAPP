@@ -13,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OtherUsersProfileActivity"></activity>
+        <activity android:name=".Activities.ExploreActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity android:name=".Activities.FinalSearchActivity" />
+        <activity android:name=".Activities.SearchArtistActivity" />
+        <activity android:name=".OtherUsersProfileActivity" />
         <activity android:name=".Activities.CommentsActivity" />
         <activity android:name=".Activities.LikesActivity" />
         <activity android:name=".Activities.SelectedGroupUsersActivity" />

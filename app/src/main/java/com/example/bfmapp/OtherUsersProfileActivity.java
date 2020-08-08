@@ -68,9 +68,9 @@ public class OtherUsersProfileActivity extends AppCompatActivity {
         intent = getIntent();
         if (intent != null){
 
-            if (intent.getStringExtra("likedname") != null) {
-                 likedname = intent.getStringExtra("likedname");
-                 likeduserimg = intent.getIntExtra("likeduserimg", R.drawable.ic_launcher_foreground);
+            if (intent.getStringExtra("username") != null) {
+                 likedname = intent.getStringExtra("username");
+                 likeduserimg = intent.getIntExtra("userimg", R.drawable.ic_launcher_foreground);
 
                 getSupportActionBar().setTitle(likedname);
                 profileimg.setImageResource(likeduserimg);

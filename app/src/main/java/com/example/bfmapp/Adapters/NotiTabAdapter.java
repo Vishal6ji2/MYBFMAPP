@@ -16,8 +16,6 @@ import java.util.ArrayList;
 
 public class NotiTabAdapter extends FragmentStateAdapter {
 
-//    ArrayList<String> arrayList = new ArrayList<>();
-//    ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
 
     public NotiTabAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);

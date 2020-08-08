@@ -109,8 +109,7 @@ public class ChatMessagesActivity extends AppCompatActivity {
                     Toast.makeText(ChatMessagesActivity.this, "blocked ", Toast.LENGTH_SHORT).show();
                     bottomSheetDialog.dismiss();
 
-
-                    openBlockBottomSheet(bottomSheetDialog1);
+                    openBlockBottomSheet();
                 }
             });
 
@@ -119,7 +118,7 @@ public class ChatMessagesActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Toast.makeText(ChatMessagesActivity.this, "delete message", Toast.LENGTH_SHORT).show();
                     bottomSheetDialog.dismiss();
-                    openDeleteBottomSheet(bottomSheetDialog1);
+                    openDeleteBottomSheet();
                 }
             });
 
@@ -127,7 +126,7 @@ public class ChatMessagesActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     bottomSheetDialog.dismiss();
-                    openMutemsgBottomsheet(bottomSheetDialog1);
+                    openMutemsgBottomsheet();
                 }
             });
 
@@ -136,7 +135,7 @@ public class ChatMessagesActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Toast.makeText(ChatMessagesActivity.this, "Reported", Toast.LENGTH_SHORT).show();
                     bottomSheetDialog.dismiss();
-                    openReportBottomsheet(bottomSheetDialog1);
+                    openReportBottomsheet();
                 }
             });
 
@@ -175,16 +174,14 @@ public class ChatMessagesActivity extends AppCompatActivity {
         cmrecyclerview = findViewById(R.id.cm_recyclerview);
     }
 
-    public void openMutemsgBottomsheet(BottomSheetDialog mmbottomSheetDialog){
-        mmbottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
-        final SwitchCompat switchCompat = findViewById(R.id.mm_switch);
-        final AppCompatCheckBox checkBox = findViewById(R.id.mm_checkbox);
+    public void openMutemsgBottomsheet(){
+        final BottomSheetDialog  mmbottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
+
 
         final LinearLayout mmllbottomsheet = findViewById(R.id.mm_llbottomsheet);
-        Toast.makeText(ChatMessagesActivity.this, "Mute enabled", Toast.LENGTH_SHORT).show();
-//        bottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
         final View mmview = LayoutInflater.from(ChatMessagesActivity.this).inflate(R.layout.mutemsgbottomsheet,mmllbottomsheet);
-
+        final SwitchCompat switchCompat = mmview.findViewById(R.id.mm_switch);
+        final AppCompatCheckBox checkBox = mmview.findViewById(R.id.mm_checkbox);
         switchCompat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,11 +204,11 @@ public class ChatMessagesActivity extends AppCompatActivity {
             }
         });
 
-        final BottomSheetDialog finalMmbottomSheetDialog = mmbottomSheetDialog;
+//        final BottomSheetDialog finalMmbottomSheetDialog = mmbottomSheetDialog;
         mmview.findViewById(R.id.mm_canceltxt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finalMmbottomSheetDialog.dismiss();
+                mmbottomSheetDialog.dismiss();
             }
         });
 
@@ -220,40 +217,34 @@ public class ChatMessagesActivity extends AppCompatActivity {
 
     }
 
-    public void openReportBottomsheet(BottomSheetDialog reportbottomSheetDialog){
+    public void openReportBottomsheet(){
 
-        reportbottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
+        final BottomSheetDialog  reportbottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
         final LinearLayout reportllbottomsheet = findViewById(R.id.report_llbottomsheet);
-        Toast.makeText(ChatMessagesActivity.this, "Mute enabled", Toast.LENGTH_SHORT).show();
-//        bottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
+
         final View reportview = LayoutInflater.from(ChatMessagesActivity.this).inflate(R.layout.reportbottomsheet,reportllbottomsheet);
 
-        reportbottomSheetDialog.setContentView(reportview);
-        reportbottomSheetDialog.show();
-
-        final BottomSheetDialog finalReportbottomSheetDialog1 = reportbottomSheetDialog;
         reportview.findViewById(R.id.report_inappropriatetxt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ChatMessagesActivity.this, "Inappropriate message", Toast.LENGTH_SHORT).show();
-                finalReportbottomSheetDialog1.dismiss();
+                reportbottomSheetDialog.dismiss();
             }
         });
 
-        final BottomSheetDialog finalReportbottomSheetDialog2 = reportbottomSheetDialog;
         reportview.findViewById(R.id.report_spamtxt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     Toast.makeText(ChatMessagesActivity.this, "Spam", Toast.LENGTH_SHORT).show();
-                    finalReportbottomSheetDialog2.dismiss();
+                reportbottomSheetDialog.dismiss();
               }
         });
 
-        final BottomSheetDialog finalReportbottomSheetDialog = reportbottomSheetDialog;
+//        final BottomSheetDialog finalReportbottomSheetDialog = reportbottomSheetDialog;
         reportview.findViewById(R.id.report_canceltxt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finalReportbottomSheetDialog.dismiss();
+                reportbottomSheetDialog.dismiss();
             }
         });
 
@@ -262,41 +253,33 @@ public class ChatMessagesActivity extends AppCompatActivity {
     }
 
 
-    public void openBlockBottomSheet(BottomSheetDialog blockbottomSheetDialog){
+    public void openBlockBottomSheet(){
 
-        blockbottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
+      final BottomSheetDialog  blockbottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
 
-        LinearLayout llblocklayout = findViewById(R.id.llblockbottomsheet);
+       final LinearLayout llblocklayout = findViewById(R.id.llblockbottomsheet);
 
-        View blockview = LayoutInflater.from(ChatMessagesActivity.this).inflate(R.layout.blockbottomsheet,llblocklayout);
+       final View blockview = LayoutInflater.from(ChatMessagesActivity.this).inflate(R.layout.blockbottomsheet,llblocklayout);
 
         final AppCompatCheckBox checkBox = blockview.findViewById(R.id.bl_checkbox);
 
 
-        blockbottomSheetDialog.setContentView(blockview);
-        blockbottomSheetDialog.show();
-
-//        deleteview.findViewById(R.id.dl_txtusername)
-
-        final BottomSheetDialog finalDeletebottomSheetDialog = blockbottomSheetDialog;
         blockview.findViewById(R.id.bl_blocktxt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ChatMessagesActivity.this, "User Blocked", Toast.LENGTH_SHORT).show();
-                finalDeletebottomSheetDialog.dismiss();
+                blockbottomSheetDialog.dismiss();
             }
         });
 
-        final BottomSheetDialog finalDeletebottomSheetDialog1 = blockbottomSheetDialog;
         blockview.findViewById(R.id.bl_txtcancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ChatMessagesActivity.this, "Canceled", Toast.LENGTH_SHORT).show();
-                finalDeletebottomSheetDialog1.dismiss();
+                blockbottomSheetDialog.dismiss();
             }
         });
 
-        final BottomSheetDialog finalDeletebottomSheetDialog2 = blockbottomSheetDialog;
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -305,7 +288,6 @@ public class ChatMessagesActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(ChatMessagesActivity.this, "Chat not deleted", Toast.LENGTH_SHORT).show();
                 }
-                finalDeletebottomSheetDialog2.dismiss();
             }
         });
 
@@ -315,34 +297,30 @@ public class ChatMessagesActivity extends AppCompatActivity {
     }
 
 
-    public void openDeleteBottomSheet(BottomSheetDialog deletebottomSheetDialog){
+    public void openDeleteBottomSheet(){
 
-        deletebottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
+      final BottomSheetDialog  deletebottomSheetDialog = new BottomSheetDialog(ChatMessagesActivity.this);
 
         LinearLayout lldeletelayout = findViewById(R.id.lldeletebottomsheet);
 
         View deleteview = LayoutInflater.from(ChatMessagesActivity.this).inflate(R.layout.deletebottomsheet,lldeletelayout);
 
 
-        deletebottomSheetDialog.setContentView(deleteview);
-        deletebottomSheetDialog.show();
-
-
-        final BottomSheetDialog finalDeletebottomSheetDialog = deletebottomSheetDialog;
+//        final BottomSheetDialog finalDeletebottomSheetDialog = deletebottomSheetDialog;
         deleteview.findViewById(R.id.dl_deletetxt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ChatMessagesActivity.this, "Delete chat", Toast.LENGTH_SHORT).show();
-                finalDeletebottomSheetDialog.dismiss();
+                deletebottomSheetDialog.dismiss();
             }
         });
 
-        final BottomSheetDialog finalDeletebottomSheetDialog1 = deletebottomSheetDialog;
+//        final BottomSheetDialog finalDeletebottomSheetDialog1 = deletebottomSheetDialog;
         deleteview.findViewById(R.id.dl_canceltxt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(ChatMessagesActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
-                finalDeletebottomSheetDialog1.dismiss();
+                deletebottomSheetDialog.dismiss();
             }
         });
 

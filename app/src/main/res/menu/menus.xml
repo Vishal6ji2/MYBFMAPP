@@ -4,7 +4,7 @@
 
     <item android:id="@+id/bnav_browser"
          android:icon="@drawable/globeicon"
-        android:title="world" />
+        android:title="Explore" />
 
     <item android:id="@+id/bnav_home"
         android:icon="@drawable/homeicon"

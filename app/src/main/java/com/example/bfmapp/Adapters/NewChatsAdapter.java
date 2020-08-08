@@ -64,6 +64,13 @@ public class NewChatsAdapter extends RecyclerView.Adapter<NewChatsAdapter.ViewHo
         return newChatsSuitcaseArrayList.size();
     }
 
+    public void filteredlist(ArrayList<NewChatsSuitcase> filterlist) {
+
+        newChatsSuitcaseArrayList = filterlist;
+
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView chatnametxt;

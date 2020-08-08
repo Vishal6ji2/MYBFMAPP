@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -30,15 +31,16 @@ import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 
-public class TimelinepostActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
+public class TimelinepostActivity extends AppCompatActivity /*implements DrawerAdapter.OnItemSelectedListener*/ {
 
 
-    private static final int POS_SETTINGS = 0;
+    /*private static final int POS_SETTINGS = 0;
     private static final int POS_SAVED = 1;
     private static final int POS_FAQ = 2;
     private static final int POS_INVITEFRIENDS = 3;
@@ -46,7 +48,7 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
-
+*/
     private SlidingRootNav slidingRootNav;
 
     MaterialToolbar toolbar;
@@ -55,6 +57,7 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
     EditText edtartist;
     CardView cardmsg;
 
+    LinearLayout  searchbarlayout;
     RecyclerView timelinerecyclerview;
 
     BottomNavigationView bottomNavigationView;
@@ -73,11 +76,30 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
         setSupportActionBar(toolbar);
 
 
-        /*imgsearch.setOnClickListener(new View.OnClickListener() {
+        searchbarlayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(TimelinepostActivity.this,SearchArtistActivity.class));
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
             }
-        });*/
+        });
+
+        imgsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimelinepostActivity.this,SearchArtistActivity.class));
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            }
+        });
+
+
+        edtartist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimelinepostActivity.this,SearchArtistActivity.class));
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            }
+        });
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -86,6 +108,9 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
                 if (item.getItemId() == R.id.bnav_noti){
 
                     startActivity(new Intent(TimelinepostActivity.this,NotificationActivity.class));
+                }else if (item.getItemId() == R.id.bnav_browser){
+                    startActivity(new Intent(TimelinepostActivity.this,ExploreActivity.class));
+                    overridePendingTransition(0,0);
                 }
 
 
@@ -120,11 +145,11 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
        });
 
 
-       screenIcons = loadScreeicons();
-       screenTitles = loadScreentitles();
+//       screenIcons = loadScreeicons();
+//       screenTitles = loadScreentitles();
 
 
-       DrawerAdapter drawerAdapter = new DrawerAdapter(Arrays.asList(
+    /*   DrawerAdapter drawerAdapter = new DrawerAdapter(Arrays.asList(
                createItemFor(POS_SETTINGS),
                createItemFor(POS_SAVED),
                createItemFor(POS_FAQ),
@@ -132,15 +157,9 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
                createItemFor(POS_LOGOUT)));
 
        drawerAdapter.setListener(this);
+*/
 
-        cardmsg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                startActivity(new Intent(TimelinepostActivity.this,ChatUsersActivity.class));
-
-            }
-        });
 
 
         addPosts("Seronmeza","50 likes","54 comments","Jodhpur,Rajasthan","54 minutes ago",R.drawable.postone,R.drawable.profileone);
@@ -153,10 +172,6 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
 
         addPosts("Kotlin watson","22 likes","212 comments","Chandni chowk,Delhi","5 minutes ago",R.drawable.postfive,R.drawable.profilefive);
 
-
-
-
-        timelinerecyclerview.setHasFixedSize(true);
 
         for (int i = 0;i<10;i++){
 
@@ -171,15 +186,15 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
 
 
     }
-    private DrawerItem createItemFor(int position) {
+  /*  private DrawerItem createItemFor(int position) {
         return new SimplemenuItem(screenIcons[position], screenTitles[position])
                 .withIconTint(R.color.colorAccent)
                 .withTextTint((R.color.colorAccent))
                 .withSelectedItemIconTint((R.color.colorAccent))
                 .withSelectedTextTint((R.color.colorAccent));
     }
-
-    private String[] loadScreentitles() {
+*/
+  /*  private String[] loadScreentitles() {
         return getResources().getStringArray(R.array.sidebarmenunames);
     }
 
@@ -195,7 +210,7 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
         ta.recycle();
         return icons;
     }
-
+*/
     private void getRandomList(ArrayList<PostSuitcase> arrayList) {
 
         Random random = new Random();
@@ -303,6 +318,8 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
 
 //        relativeLayout = findViewById(R.id.timeline_relativelayout);
 
+        searchbarlayout = findViewById(R.id.timeline_searchbarlayout);
+
         toolbar = findViewById(R.id.timeline_topbar);
 
         bottomNavigationView = findViewById(R.id.timeline_bnv);
@@ -319,8 +336,5 @@ public class TimelinepostActivity extends AppCompatActivity implements DrawerAda
 
     }
 
-    @Override
-    public void onItemSelected(int position) {
 
-    }
 }
