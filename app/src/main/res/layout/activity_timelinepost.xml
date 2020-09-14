@@ -9,11 +9,10 @@
     android:background="@android:color/white">
 
 
-
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/timeline_barlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent">
 
 
@@ -41,17 +40,19 @@
             android:weightSum="2">
 
 
-            <EditText
+            <TextView
                 android:layout_weight="1.8"
                 android:id="@+id/timeline_edtartist"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Search your artist"
+                android:text="Search your artist"
                 android:gravity="start"
                 android:layout_marginStart="10dp"
                 android:textSize="17sp"
+                android:background="@null"
+                android:textCursorDrawable="@null"
                 android:singleLine="true"
-                android:background="@null" />
+                android:enabled="true"/>
 
             <ImageView
                 android:layout_weight=".2"
@@ -101,17 +102,16 @@
          android:layout_below="@id/timeline_barlayout"/>
 
 
+
      <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/timeline_bnv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@drawable/bnvdesign"
+            app:itemTextColor="@drawable/bnvselector"
+            app:itemIconTint="@drawable/bnvselector"
             app:menu="@menu/menus"/>
 
-
-<!--    <include layout="@layout/bottomsheet_details"/>-->
-
-<!--    </RelativeLayout>-->
 
 </RelativeLayout>

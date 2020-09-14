@@ -1,6 +1,7 @@
 package com.example.bfmapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bfmapp.OtherUsersProfileActivity;
 import com.example.bfmapp.R;
 import com.example.bfmapp.Suitcases.CommentsSuitcase;
 
@@ -32,7 +34,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.userprofileimg.setImageResource(commentsSuitcaseArrayList.get(position).userprofileimg);
         holder.txtUsername.setText(commentsSuitcaseArrayList.get(position).username);
@@ -41,6 +43,15 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
         holder.txtcommentlikes.setText(commentsSuitcaseArrayList.get(position).commentlikes);
         holder.txtcommentreplies.setText(commentsSuitcaseArrayList.get(position).commentreplies);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, OtherUsersProfileActivity.class);
+                intent.putExtra("username",commentsSuitcaseArrayList.get(position).username);
+                intent.putExtra("userimg",commentsSuitcaseArrayList.get(position).userprofileimg);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -61,7 +72,6 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
             txtUsername = itemView.findViewById(R.id.customcomment_username);
             txtcommenttime = itemView.findViewById(R.id.customcomment_time);
             txtcommentline = itemView.findViewById(R.id.customcomment_commentline);
-
 
             commentlikeimg = itemView.findViewById(R.id.customcommentlikeimg);
             commentrepliesimg = itemView.findViewById(R.id.customcomment_commentimg);

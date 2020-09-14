@@ -3,13 +3,17 @@ package com.example.bfmapp.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,9 +21,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.bfmapp.Adapters.ExFavouriteAdapter;
+import com.example.bfmapp.Adapters.ExPopularAdapter;
+import com.example.bfmapp.Adapters.ExRecArtistAdapter;
 import com.example.bfmapp.R;
 import com.example.bfmapp.Suitcases.ExPopularSuitcase;
+import com.example.bfmapp.Suitcases.ExRecArtistSuitcase;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -28,16 +37,20 @@ import java.util.ArrayList;
 public class ExploreActivity extends AppCompatActivity {
 
 
-    ViewPager2 favrecyclerview,popularrecyclerview,recartistrecyclerview;
+    BottomNavigationView bottomNavigationView;
 
+    RecyclerView favrecyclerview,popularrecyclerview,recartistrecyclerview;
+
+    ArrayList<ExPopularSuitcase> popularSuitcaseArrayList = new ArrayList<>();
     ArrayList<ExPopularSuitcase> favsuitcasearraylist = new ArrayList<>();
+    ArrayList<ExRecArtistSuitcase> recArtistSuitcaseArrayList = new ArrayList<>();
 
     private SlidingRootNav slidingRootNav;
 
     MaterialToolbar toolbar;
 
     ImageView imgsearch;
-    EditText edtartist;
+    TextView edtartist;
     CardView cardmsg;
 
     LinearLayout searchbarlayout;
@@ -54,8 +67,41 @@ public class ExploreActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+        bottomNavigationView.setSelectedItemId(R.id.bnav_browser);
 
-        favrecyclerviewopen();
+        Openpopularrecyclerview();
+
+        Openrecartistrecyclerview();
+
+        Openfavrecyclerview();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if (item.getItemId() == R.id.bnav_noti){
+
+                    startActivity(new Intent(ExploreActivity.this,NotificationActivity.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                }else if (item.getItemId() == R.id.bnav_home){
+                    startActivity(new Intent(ExploreActivity.this,TimelinepostActivity.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                }else if (item.getItemId() == R.id.bnav_browser){
+                    return true;
+                }else if (item.getItemId() == R.id.bnav_add){
+                    startActivity(new Intent(ExploreActivity.this,CreatePostActivity.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                }else if (item.getItemId() == R.id.bnav_sidebar){
+                    startActivity(new Intent(ExploreActivity.this,SideBarActivity.class));
+                    overridePendingTransition(0,0);
+                }
+
+                return true;
+            }
+        });
 
 
         searchbarlayout.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +137,7 @@ public class ExploreActivity extends AppCompatActivity {
         });
 
 
-        slidingRootNav =  new SlidingRootNavBuilder(ExploreActivity.this)
+       /* slidingRootNav =  new SlidingRootNavBuilder(ExploreActivity.this)
                 .withToolbarMenuToggle(toolbar)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
@@ -100,6 +146,21 @@ public class ExploreActivity extends AppCompatActivity {
                 .inject();
 
         TextView viewprofile = findViewById(R.id.sidebar_viewprofile);
+        TextView viewusername = findViewById(R.id.sidebar_username);
+        LinearLayout viewsetting = findViewById(R.id.sidebar_setting);
+        CircularImageView viewprofileimg = findViewById(R.id.sidebar_profileimg);
+        LinearLayout viewlogout = findViewById(R.id.sidebar_logout);
+
+
+
+        viewlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ExploreActivity.this,LoginActivity.class));
+                slidingRootNav.closeMenu();
+                finish();
+            }
+        });
 
         viewprofile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,11 +171,97 @@ public class ExploreActivity extends AppCompatActivity {
             }
         });
 
+        viewusername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ExploreActivity.this,UserProfileActivity.class));
+                slidingRootNav.closeMenu();
 
+            }
+        });
+
+        viewprofileimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ExploreActivity.this,UserProfileActivity.class));
+                slidingRootNav.closeMenu();
+
+            }
+        });
+
+        viewsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ExploreActivity.this,SettingsActivity.class));
+                slidingRootNav.closeMenu();
+            }
+        });
+*/
+    }
+
+    private void Openpopularrecyclerview() {
+
+        addPopulardata(R.drawable.girlthree);
+        addPopulardata(R.drawable.posttwo);
+        addPopulardata(R.drawable.postthree);
+        addPopulardata(R.drawable.girlone);
+        addPopulardata(R.drawable.girltwo);
+        addPopulardata(R.drawable.postone);
+        addPopulardata(R.drawable.posttwo);
+        addPopulardata(R.drawable.postthree);
+        addPopulardata(R.drawable.girltwo);
+        addPopulardata(R.drawable.girlone);
+
+
+        popularrecyclerview.setHasFixedSize(true);
+        popularrecyclerview.setNestedScrollingEnabled(false);
+        popularrecyclerview.setItemAnimator(new DefaultItemAnimator());
+        popularrecyclerview.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        popularrecyclerview.setAdapter(new ExPopularAdapter(ExploreActivity.this,popularSuitcaseArrayList));
+    }
+
+    public void addPopulardata(int imgs){
+
+        ExPopularSuitcase exPopularSuitcase = new ExPopularSuitcase();
+        exPopularSuitcase.popularimages = imgs;
+
+        popularSuitcaseArrayList.add(exPopularSuitcase);
 
     }
 
-    private void favrecyclerviewopen() {
+    private void Openrecartistrecyclerview() {
+
+        addRecartistitems("Alisa elequent",R.drawable.postone,R.drawable.profileone);
+        addRecartistitems("James Cameron",R.drawable.posttwo,R.drawable.profiletwo);
+        addRecartistitems("MartiaZumba",R.drawable.postthree,R.drawable.profilethree);
+        addRecartistitems("RickyFlamen",R.drawable.postfour,R.drawable.profilefour);
+        addRecartistitems("Hensberginia quent",R.drawable.postfive,R.drawable.profilefive);
+        addRecartistitems("Alisa elequent",R.drawable.postone,R.drawable.profileone);
+        addRecartistitems("James Cameron",R.drawable.posttwo,R.drawable.profiletwo);
+        addRecartistitems("MartiaZumba",R.drawable.postthree,R.drawable.profilethree);
+        addRecartistitems("RickyFlamen",R.drawable.postfour,R.drawable.profilefour);
+        addRecartistitems("Hensberginia quent",R.drawable.postfive,R.drawable.profilefive);
+
+
+        recartistrecyclerview.setHasFixedSize(true);
+        recartistrecyclerview.setNestedScrollingEnabled(false);
+        recartistrecyclerview.setItemAnimator(new DefaultItemAnimator());
+        recartistrecyclerview.setLayoutManager(new LinearLayoutManager(ExploreActivity.this,LinearLayoutManager.HORIZONTAL,false));
+        recartistrecyclerview.setAdapter(new ExRecArtistAdapter(ExploreActivity.this,recArtistSuitcaseArrayList));
+    }
+
+    public void addRecartistitems(String username,int lastpostimg,int profileimg){
+
+        ExRecArtistSuitcase exRecArtistSuitcase = new ExRecArtistSuitcase();
+        exRecArtistSuitcase.lastpost = lastpostimg;
+        exRecArtistSuitcase.profileimg = profileimg;
+        exRecArtistSuitcase.username = username;
+
+
+        recArtistSuitcaseArrayList.add(exRecArtistSuitcase);
+    }
+
+    private void Openfavrecyclerview() {
 
         addFavitems(R.drawable.postone);
         addFavitems(R.drawable.posttwo);
@@ -123,7 +270,12 @@ public class ExploreActivity extends AppCompatActivity {
         addFavitems(R.drawable.postfive);
 
 
-        favrecyclerview.setAdapter(new ExFavouriteAdapter(ExploreActivity.this,favsuitcasearraylist,favrecyclerview));
+        favrecyclerview.setHasFixedSize(true);
+        favrecyclerview.setNestedScrollingEnabled(false);
+        favrecyclerview.setItemAnimator(new DefaultItemAnimator());
+        favrecyclerview.setLayoutManager(new LinearLayoutManager(ExploreActivity.this, LinearLayoutManager.HORIZONTAL,false));
+        favrecyclerview.setAdapter(new ExFavouriteAdapter(ExploreActivity.this,favsuitcasearraylist));
+/*
         favrecyclerview.setClipToPadding(false);
         favrecyclerview.setClipChildren(true);
         favrecyclerview.setOffscreenPageLimit(3);
@@ -140,6 +292,7 @@ public class ExploreActivity extends AppCompatActivity {
         });
 
         favrecyclerview.setPageTransformer(compositePageTransformer);
+*/
 
     }
 
@@ -152,6 +305,8 @@ public class ExploreActivity extends AppCompatActivity {
 
 
     private void initviews() {
+
+        bottomNavigationView = findViewById(R.id.timeline_bnv);
 
         recartistrecyclerview = findViewById(R.id.explore_rec_artistrecyclerview);
         favrecyclerview = findViewById(R.id.explore_favrecyclerview);

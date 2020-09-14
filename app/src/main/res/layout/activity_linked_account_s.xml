@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.LinkedAccountSActivity"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/linkedas_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LinkedIn"
+        android:textSize="17sp"
+        android:drawableStart="@drawable/linkedinicon"
+        android:drawablePadding="20dp"
+        android:padding="15dp"
+        android:gravity="center|start"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Facebook"
+        android:textSize="17sp"
+        android:drawableStart="@drawable/fbicon"
+        android:gravity="center|start"
+        android:drawablePadding="20dp"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Instagram"
+        android:drawableStart="@drawable/instagramicon"
+        android:drawablePadding="20dp"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:gravity="center|start"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tumbir"
+        android:textSize="17sp"
+        android:drawableStart="@drawable/tumbiricon"
+        android:drawablePadding="20dp"
+        android:gravity="center|start"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Twitter"
+        android:textSize="17sp"
+        android:drawableStart="@drawable/twittericon"
+        android:padding="15dp"
+        android:gravity="center|start"
+        android:drawablePadding="20dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Youtube"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:drawableStart="@drawable/youtubeicon"
+        android:drawablePadding="20dp"
+        android:gravity="center|start"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+</LinearLayout>

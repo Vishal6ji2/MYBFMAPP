@@ -1,5 +1,6 @@
 package com.example.bfmapp.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.SyncStateContract;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -20,6 +22,10 @@ import android.widget.Toast;
 
 import com.example.bfmapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mikhaellopez.circularimageview.CircularImageView;
+import com.yarolegovich.slidingrootnav.SlidingRootNav;
+import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
 import java.io.IOException;
 
@@ -33,7 +39,11 @@ public class CreatePostActivity extends AppCompatActivity {
 
     ImageView postimg;
 
+    private SlidingRootNav slidingRootNav;
+
     EditText edtcaption;
+
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +56,8 @@ public class CreatePostActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Create post");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        bottomNavigationView.setSelectedItemId(R.id.bnav_add);
 
         materialToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,9 +94,102 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if (item.getItemId() == R.id.bnav_noti){
+
+                    startActivity(new Intent(CreatePostActivity.this,NotificationActivity.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                }else if (item.getItemId() == R.id.bnav_browser){
+                    startActivity(new Intent(CreatePostActivity.this,ExploreActivity.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                }else if (item.getItemId() == R.id.bnav_home){
+                    startActivity(new Intent(CreatePostActivity.this,TimelinepostActivity.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                }else if (item.getItemId() == R.id.bnav_add){
+                    return true;
+                }else if (item.getItemId() == R.id.bnav_sidebar){
+                    startActivity(new Intent(CreatePostActivity.this,SideBarActivity.class));
+                    overridePendingTransition(0,0);
+                }
+
+                return true;
+            }
+        });
+
+
+       /* slidingRootNav =  new SlidingRootNavBuilder(CreatePostActivity.this)
+                .withToolbarMenuToggle(materialToolbar)
+                .withMenuOpened(false)
+                .withContentClickableWhenMenuOpened(false)
+                .withSavedState(savedInstanceState)
+                .withMenuLayout(R.layout.sidebarprofile)
+                .inject();
+
+        TextView viewprofile = findViewById(R.id.sidebar_viewprofile);
+        TextView viewusername = findViewById(R.id.sidebar_username);
+        LinearLayout viewsetting = findViewById(R.id.sidebar_setting);
+        CircularImageView viewprofileimg = findViewById(R.id.sidebar_profileimg);
+        LinearLayout viewlogout = findViewById(R.id.sidebar_logout);
+
+
+        viewlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreatePostActivity.this,LoginActivity.class));
+                slidingRootNav.closeMenu();
+                finish();
+            }
+        });
+
+        viewprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreatePostActivity.this,UserProfileActivity.class));
+                slidingRootNav.closeMenu();
+
+            }
+        });
+
+        viewusername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreatePostActivity.this,UserProfileActivity.class));
+                slidingRootNav.closeMenu();
+
+            }
+        });
+
+        viewprofileimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreatePostActivity.this,UserProfileActivity.class));
+                slidingRootNav.closeMenu();
+
+            }
+        });
+
+        viewsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreatePostActivity.this,SettingsActivity.class));
+                slidingRootNav.closeMenu();
+            }
+        });
+*/
+
     }
 
     private void initViews() {
+
+        bottomNavigationView = findViewById(R.id.timeline_bnv);
+
+        materialToolbar = findViewById(R.id.cp_toolbar);
 
         posttxt = findViewById(R.id.cp_posttxt);
         llcamera = findViewById(R.id.cp_llcamera);

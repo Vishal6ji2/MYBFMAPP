@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enter the 4-digit code we sent to"
+                android:text="Enter the 6-digit code we sent to"
                 android:textSize="17sp"
                 android:layout_marginTop="15dp"
                 android:textStyle="normal"
@@ -37,6 +37,7 @@
 
 
             <TextView
+                android:id="@+id/otp_txtmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="+91 7239973921"
@@ -52,16 +53,18 @@
                 android:hint="Confirmation code">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/otp_edtcode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:maxLength="4"
+                    android:maxLength="6"
                     android:background="@android:color/white"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <TextView
+                android:id="@+id/otp_txtresendotp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Request new OTP?"
@@ -72,11 +75,12 @@
 
 
             <Button
+                android:id="@+id/otp_btnnext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Next"
                 android:textColor="@android:color/white"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textAllCaps="false"
                 android:layout_margin="10dp"
                 android:textStyle="bold"

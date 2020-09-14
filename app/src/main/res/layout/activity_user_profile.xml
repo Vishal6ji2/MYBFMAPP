@@ -25,7 +25,7 @@
             android:id="@+id/userprofile_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="alisa.eloquent"
+            android:text="Alisa Coalson"
             android:layout_centerVertical="true"
             android:layout_toStartOf="@+id/userprofile_edit"
             android:textSize="16sp"
@@ -39,10 +39,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 app:cardUseCompatPadding="true"
-                android:background="@android:color/white"
                 app:cardElevation="5dp"
                 app:cardCornerRadius="20dp"
-                android:layout_centerVertical="true">
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackground">
 
             <ImageView
                 android:layout_width="30dp"
@@ -59,13 +59,18 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
+
+    <ScrollView
+        android:id="@+id/userprofile_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/userprofile_barlayout"
-        android:orientation="vertical">
+        android:layout_below="@id/userprofile_barlayout">
 
-
+        <LinearLayout
+            android:id="@+id/userprofile_llone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:layout_width="match_parent"
@@ -158,7 +163,8 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/gridicon"
-                android:padding="3dp"/>
+                android:padding="3dp"
+                android:background="?attr/selectableItemBackground"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -172,25 +178,30 @@
                 android:id="@+id/userprofile_listimg"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/listicon"/>
+                android:src="@drawable/listicon"
+                android:background="?attr/selectableItemBackground"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end">
-
+<!--
                 <ImageView
+                    android:id="@+id/userprofile_imgmore"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/moreinfoicon"/>
+                    android:src="@drawable/moreinfoicon"/>-->
 
                 <TextView
+                    android:id="@+id/userprofile_txtmore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="more info"
                     android:gravity="center"
                     android:textSize="18sp"
-                    android:layout_gravity="center"/>
+                    android:drawableStart="@drawable/moreinfoicon"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackground"/>
 
 
             </LinearLayout>
@@ -198,12 +209,166 @@
         </LinearLayout>
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/userprofile_recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/userprofile_llmoreinfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="invisible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Website"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="www.saffrondesigns.in"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Address"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="7 Street Napier Town, California"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Location"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="California, United States America"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Email"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="alisacoalson@gmail.com"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Phone Number"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="+1 53647 32245"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:layout_marginTop="5dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Instagram"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="https://www.instagram.com/tknigs/"
+                            android:textSize="15sp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/userprofile_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:visibility="visible"/>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
 
 </RelativeLayout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.PrivacySettingActivity"
+    android:orientation="vertical"
+    android:id="@+id/prisetting_fragcontainer">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/prisetting_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Who can see your profile"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
+        android:textSize="15sp"
+        android:padding="10dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/prisetting_everysee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Everyone"
+        android:checked="false"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/prisetting_followers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Only followers"
+        android:checked="true"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Call request enable"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
+        android:textSize="15sp"
+        android:padding="10dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/prisetting_everycall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Everyone"
+        android:checked="true"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/prisetting_reqcall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request"
+        android:checked="false"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Proposal request enable"
+        android:textColor="@android:color/black"
+        android:fontFamily="serif"
+        android:textSize="15sp"
+        android:padding="10dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/prisetting_everyproposal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Everyone"
+        android:checked="true"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/prisetting_reqproposal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Only followers"
+        android:checked="false"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/prisetting_txtblocked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Blocked accounts"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:padding="10dp"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Muted accounts"
+        android:textColor="@android:color/black"
+        android:textSize="17sp"
+        android:padding="10dp"
+        android:background="?attr/selectableItemBackground"/>
+
+    </LinearLayout>
+
+</FrameLayout>

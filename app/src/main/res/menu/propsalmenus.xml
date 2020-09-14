@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/propmenu_send"
+         android:title="Send"
+         android:icon="@drawable/sendicon"
+         app:showAsAction="always"/>
+
+    <item android:id="@+id/propmenu_first"
+        android:title="first menu"
+        android:icon="@drawable/sendicon"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/propmenu_second"
+        android:title="second menu"
+        android:icon="@drawable/sendicon"
+        app:showAsAction="never"/>
+
+
+
+</menu>

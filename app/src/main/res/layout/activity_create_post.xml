@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.CreatePostActivity"
-    android:orientation="vertical">
+    android:background="@android:color/white">
 
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/cp_barlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -27,7 +28,8 @@
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:gravity="end"/>
+            android:gravity="end"
+            android:background="?attr/selectableItemBackground"/>
 
 
     </com.google.android.material.appbar.MaterialToolbar>
@@ -38,20 +40,21 @@
         android:id="@+id/cp_lineone"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/black"/>
-
+        android:background="@android:color/black"
+        android:layout_below="@+id/cp_barlayout"/>
 
     <LinearLayout
         android:id="@+id/cp_llmind"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_below="@+id/cp_lineone">
 
 
         <com.mikhaellopez.circularimageview.CircularImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/profilethree"/>
 
 
@@ -62,63 +65,53 @@
             android:hint="What's on your mind"
             android:background="@null"
             android:singleLine="true"
+            android:textSize="15sp"
             android:layout_marginStart="5dp"/>
 
     </LinearLayout>
 
-
-
-    <RelativeLayout
+    <VideoView
+        android:id="@+id/cp_postvideo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp">
+        android:visibility="invisible"
+        android:layout_below="@+id/cp_llmind"
+        android:layout_above="@+id/cp_lloptions"
+        android:layout_margin="5dp"/>
 
-        <VideoView
-            android:id="@+id/cp_postvideo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/cp_lloptions"
-            android:visibility="invisible"/>
-
-        <ImageView
-            android:id="@+id/cp_postimg"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/cp_lloptions"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profileone"
-            android:visibility="gone"/>
-
+    <ImageView
+        android:id="@+id/cp_postimg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:visibility="visible"
+        android:layout_above="@+id/cp_lloptions"
+        android:layout_below="@+id/cp_llmind"
+        android:layout_margin="5dp"/>
 
     <LinearLayout
         android:id="@+id/cp_lloptions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@+id/timeline_bnv"
+        android:layout_marginBottom="3dp">
 
 
         <LinearLayout
             android:id="@+id/cp_llcamera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:orientation="horizontal"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_weight="0.1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/cameracpicon"/>
-
+            android:padding="10dp">
 
             <TextView
-                android:layout_weight="0.9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Camera"
+                android:drawablePadding="20dp"
                 android:textSize="18sp"
+                android:drawableStart="@drawable/cameracpicon"
                 android:textColor="#F0575555"
                 android:layout_marginStart="10dp"/>
 
@@ -152,19 +145,14 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <ImageView
-                android:layout_weight="0.1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/collectionicon"/>
-
 
             <TextView
-                android:layout_weight="0.9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Gallery / Video"
                 android:textSize="18sp"
+                android:drawableStart="@drawable/collectionicon"
+                android:drawablePadding="20dp"
                 android:textColor="#F0575555"
                 android:layout_marginStart="10dp"/>
 
@@ -197,23 +185,23 @@
             android:padding="10dp"
             android:orientation="horizontal"
             android:gravity="center">
-
+<!--
             <ImageView
                 android:layout_weight="0.1"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/tagicon"/>
+                android:src="@drawable/tagicon"/>-->
 
 
             <TextView
-                android:layout_weight="0.9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tag"
                 android:textSize="18sp"
                 android:textColor="#F0575555"
+                android:drawableStart="@drawable/tagicon"
+                android:drawablePadding="20dp"
                 android:layout_marginStart="10dp"/>
-
 
         </LinearLayout>
 
@@ -241,21 +229,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:orientation="horizontal"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_weight="0.1"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/othericon"/>
-
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_weight="0.9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Others"
+                android:drawableStart="@drawable/othericon"
+                android:drawablePadding="20dp"
                 android:textSize="18sp"
                 android:textColor="#F0575555"
                 android:layout_marginStart="10dp"/>
@@ -282,12 +263,17 @@
 
         </LinearLayout>
 
-
-
     </LinearLayout>
 
-    </RelativeLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/timeline_bnv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bnvdesign"
+        app:itemTextColor="@drawable/bnvselector"
+        app:itemIconTint="@drawable/bnvselector"
+        app:menu="@menu/menus"/>
 
 
-
-</LinearLayout>
+</RelativeLayout>

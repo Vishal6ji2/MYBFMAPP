@@ -12,7 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Mute message"
+        android:checked="true"
         android:textSize="16sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="5dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
         android:textColor="@color/colorPrimary"/>
 
     <TextView

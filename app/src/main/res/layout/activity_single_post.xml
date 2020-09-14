@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.SinglePostActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/singlep_barlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/singlep_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/singlep_llprofiles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/singlep_barlayout">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/singlep_imgprofile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/profilefive"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:id="@+id/singlep_txttime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/singlep_imgprofile"
+                android:text="58 minutes ago"
+                android:layout_marginStart="5dp"
+                android:layout_alignBottom="@id/singlep_imgprofile"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/singlep_txtname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:layout_toEndOf="@id/singlep_imgprofile"
+                android:text="Serenagomez"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:textSize="18sp"/>
+
+            <ImageView
+                android:id="@+id/singlep_imgloc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/locationicon"
+                android:layout_toEndOf="@id/singlep_txttime"
+                android:layout_alignBottom="@id/singlep_imgprofile"/>
+
+
+            <TextView
+                android:id="@+id/singlep_txtlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instabul,Turkey"
+                android:layout_toEndOf="@+id/singlep_imgloc"
+                android:layout_alignBottom="@id/singlep_imgprofile"/>
+
+            <ImageView
+                android:id="@+id/singlep_imgmenu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/dotsicon"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:padding="15dp"
+                android:visibility="invisible"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/singlep_txtlines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="The are of showing the video cinematically.The are of showing the video cinematically.The are of showing the video cinematically."
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:layout_below="@+id/singlep_llprofiles"/>
+
+
+    <ImageView
+        android:id="@+id/singlep_imgpost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/customimg"
+        android:scaleType="centerCrop"
+        android:layout_below="@+id/singlep_txtlines"
+        android:layout_above="@+id/singlep_likecomment"/>
+
+
+    <RelativeLayout
+        android:id="@+id/singlep_likecomment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_above="@+id/singlep_line">
+
+        <ImageView
+            android:id="@+id/singlep_imgblackheart"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/redhearticon"/>
+
+        <TextView
+            android:id="@+id/singlep_txtlikes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="281 likes"
+            android:layout_toEndOf="@id/singlep_imgblackheart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"/>
+
+
+        <TextView
+            android:id="@+id/singlep_txtcomments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="34 comments"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/singlep_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#43000000"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentBottom="true"/>
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/singlep_tools"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="10dp"-->
+<!--        android:weightSum="2"-->
+<!--        android:visibility="invisible"-->
+<!--        android:layout_alignParentBottom="true">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+
+<!--            <RelativeLayout-->
+<!--                android:layout_weight="0.3"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/singlep_imgblackheartlike"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:src="@drawable/likeblackicon"-->
+<!--                    android:layout_gravity="start"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:visibility="visible"/>-->
+
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/singlep_imgblueheartlike"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:src="@drawable/redhearticon"-->
+<!--                    android:layout_gravity="start"-->
+<!--                    android:padding="5dp"-->
+<!--                    android:visibility="invisible"/>-->
+
+<!--            </RelativeLayout>-->
+
+
+<!--            <ImageView-->
+<!--                android:layout_weight="0.3"-->
+<!--                android:id="@+id/singlep_imgcomment"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:src="@drawable/commenticon"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:padding="5dp"/>-->
+
+<!--            <ImageView-->
+<!--                android:layout_weight="0.3"-->
+<!--                android:id="@+id/singlep_imgshare"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:src="@drawable/shareicon"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:padding="5dp"/>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/singlep_imgbookmark"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:src="@drawable/bookmarkicon"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:padding="5dp"/>-->
+
+<!--        </RelativeLayout>-->
+
+<!--    </LinearLayout>-->
+
+</RelativeLayout>

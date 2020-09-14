@@ -11,7 +11,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/timeline_barlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent">
 
 
@@ -39,12 +39,12 @@
                     android:weightSum="2">
 
 
-                    <EditText
+                    <TextView
                         android:layout_weight="1.8"
                         android:id="@+id/timeline_edtartist"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Search your artist"
+                        android:text="Search your artist"
                         android:gravity="start"
                         android:layout_marginStart="10dp"
                         android:textSize="17sp"
@@ -91,32 +91,38 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeline_barlayout"
+        android:layout_above="@+id/timeline_bnv">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/timeline_barlayout">
+        android:orientation="vertical">
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Favourite Category"
-            android:padding="5dp"/>
+            android:padding="10dp"
+            android:textSize="16sp"/>
 
-        <androidx.viewpager2.widget.ViewPager2
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/explore_favrecyclerview"
             android:layout_width="match_parent"
-            android:layout_height="200dp"/>
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Recommended Artist"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:textSize="16sp"/>
 
-        <androidx.viewpager2.widget.ViewPager2
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/explore_rec_artistrecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -125,13 +131,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Popular"
-            android:padding="10dp"/>
+            android:padding="10dp"
+            android:textSize="16sp"/>
 
-        <androidx.viewpager2.widget.ViewPager2
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/explore_popularrecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
+
+    </ScrollView>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/timeline_bnv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bnvdesign"
+        android:backgroundTint="@android:color/transparent"
+        app:itemTextColor="@drawable/bnvselector"
+        app:itemIconTint="@drawable/bnvselector"
+        app:menu="@menu/menus"/>
 
 </RelativeLayout>

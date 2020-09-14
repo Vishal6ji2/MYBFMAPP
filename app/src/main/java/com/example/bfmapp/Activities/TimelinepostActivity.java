@@ -28,6 +28,7 @@ import com.example.bfmapp.Suitcases.SimplemenuItem;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 
@@ -54,7 +55,7 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
     MaterialToolbar toolbar;
 
     ImageView imgsearch;
-    EditText edtartist;
+    TextView edtartist;
     CardView cardmsg;
 
     LinearLayout  searchbarlayout;
@@ -75,6 +76,7 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
 
         setSupportActionBar(toolbar);
 
+        bottomNavigationView.setSelectedItemId(R.id.bnav_home);
 
         searchbarlayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,11 +110,22 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
                 if (item.getItemId() == R.id.bnav_noti){
 
                     startActivity(new Intent(TimelinepostActivity.this,NotificationActivity.class));
+                    overridePendingTransition(0,0);
+                    finish();
                 }else if (item.getItemId() == R.id.bnav_browser){
                     startActivity(new Intent(TimelinepostActivity.this,ExploreActivity.class));
                     overridePendingTransition(0,0);
+                    finish();
+                }else if (item.getItemId() == R.id.bnav_home){
+                    return true;
+                }else if (item.getItemId() == R.id.bnav_add){
+                    startActivity(new Intent(TimelinepostActivity.this,CreatePostActivity.class));
+                    overridePendingTransition(0,0);
+                    finish();
+                }else if (item.getItemId() == R.id.bnav_sidebar){
+                    startActivity(new Intent(TimelinepostActivity.this,SideBarActivity.class));
+                    overridePendingTransition(0,0);
                 }
-
 
                 return true;
             }
@@ -125,7 +138,7 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
             }
         });
 
-       slidingRootNav =  new SlidingRootNavBuilder(TimelinepostActivity.this)
+      /* slidingRootNav =  new SlidingRootNavBuilder(TimelinepostActivity.this)
                .withToolbarMenuToggle(toolbar)
                .withMenuOpened(false)
                .withContentClickableWhenMenuOpened(false)
@@ -134,6 +147,11 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
                .inject();
 
        TextView viewprofile = findViewById(R.id.sidebar_viewprofile);
+       TextView viewusername = findViewById(R.id.sidebar_username);
+       LinearLayout viewsetting = findViewById(R.id.sidebar_setting);
+       CircularImageView viewprofileimg = findViewById(R.id.sidebar_profileimg);
+       LinearLayout viewlogout = findViewById(R.id.sidebar_logout);
+
 
        viewprofile.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -144,7 +162,41 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
            }
        });
 
+        viewusername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimelinepostActivity.this,UserProfileActivity.class));
+                slidingRootNav.closeMenu();
 
+            }
+        });
+
+        viewprofileimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimelinepostActivity.this,UserProfileActivity.class));
+                slidingRootNav.closeMenu();
+
+            }
+        });
+
+        viewsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimelinepostActivity.this,SettingsActivity.class));
+                slidingRootNav.closeMenu();
+            }
+        });
+
+
+        viewlogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimelinepostActivity.this,LoginActivity.class));
+                slidingRootNav.closeMenu();
+                finish();
+            }
+        });*/
 //       screenIcons = loadScreeicons();
 //       screenTitles = loadScreentitles();
 
@@ -162,15 +214,16 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
 
 
 
-        addPosts("Seronmeza","50 likes","54 comments","Jodhpur,Rajasthan","54 minutes ago",R.drawable.postone,R.drawable.profileone);
+        addPosts("Seronmeza","50 likes","54 comments","Jodhpur,Rajasthan","54 minutes ago","The are of showing the video cinematically.The are of showing the video cinematically.The are of showing the video cinematically.",R.drawable.postone,R.drawable.profileone);
 
-        addPosts("Vishal Kumavat","100 likes","102 comments","Jaipur,Rajasthan","12 minutes ago",R.drawable.posttwo,R.drawable.profiletwo);
+        addPosts("Vishal Kumavat","100 likes","102 comments","Jaipur,Rajasthan","12 minutes ago","This is very good now i'm fine and it's very amazingThis is very good now i'm fine and it's very amazingThis is very good now i'm fine and it's very amazingThis is very good now i'm fine and it's very amazingThis is very good now i'm fine and it's very amazing",R.drawable.posttwo,R.drawable.profiletwo);
 
-        addPosts("Jackquline ","71 likes","77 comments","Pune,Maharastra","2 minutes ago",R.drawable.postthree,R.drawable.profilethree);
+        addPosts("Jackquline ","71 likes","77 comments","Pune,Maharastra","2 minutes ago","The are of showing the video cinematically.The are of showing the video cinematically.The are of showing the video cinematically.",R.drawable.postthree,R.drawable.profilethree);
 
-        addPosts("Tarun Kumar","68 likes","27 comments","Surat,Gujrat","44 minutes ago",R.drawable.postfour,R.drawable.profilefour);
+        addPosts("Tarun Kumar","68 likes","27 comments","Surat,Gujrat","44 minutes ago","Looking pretty and very awesomeness weather with wonderful feeling.",R.drawable.postfour,R.drawable.profilefour);
 
-        addPosts("Kotlin watson","22 likes","212 comments","Chandni chowk,Delhi","5 minutes ago",R.drawable.postfive,R.drawable.profilefive);
+        addPosts("Kotlin watson","22 likes","212 comments","Chandni chowk,Delhi","5 minutes ago","The are of showing the video cinematically.The are of showing the video cinematically.The are of showing the video cinematically." +
+                "The are of showing the video cinematically.The are of showing the video cinematically.The are of showing the video cinematically." ,R.drawable.postfive,R.drawable.profilefive);
 
 
         for (int i = 0;i<10;i++){
@@ -232,12 +285,13 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
 
     }
 
-    private void addPosts(String name,String likes,String comments, String location, String time, int postimg, int profileimg) {
+    private void addPosts(String name,String likes,String comments, String location, String time,String captain, int postimg, int profileimg) {
         PostSuitcase postSuitcase = new PostSuitcase();
 
         postSuitcase.ps_name = name;
         postSuitcase.ps_likes = likes;
         postSuitcase.ps_comments = comments;
+        postSuitcase.ps_captain = captain;
         postSuitcase.ps_location = location;
         postSuitcase.ps_time = time;
         postSuitcase.ps_imgpost = postimg;

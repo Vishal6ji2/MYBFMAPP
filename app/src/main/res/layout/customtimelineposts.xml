@@ -77,14 +77,37 @@
 
         </RelativeLayout>
 
-        <TextView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <com.codesgood.views.JustifiedTextView
+            android:id="@+id/post_txtcaptain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The are of showing the video cinematically.The are of showing the video cinematically.The are of showing the video cinematically."
+            android:singleLine="false"
+            android:maxLines="3"
+            android:text="The are of showing The are of showing The are of showing TheThe are of showing The are of showing  are of showing The are of showing the video cinematically.The are of showing the video cinematically.The are of showing the video cinematically."
             android:textSize="15sp"
-            android:textStyle="bold"
+            android:textStyle="normal"
+            android:layout_toStartOf="@+id/post_txtmore"
             android:padding="5dp"/>
 
+
+        <TextView
+            android:id="@+id/post_txtmore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="more"
+            android:textColor="@color/bluecolor"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/post_txtcaptain"/>
+
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/post_imgpost"
@@ -141,49 +164,61 @@
             android:padding="10dp"
             android:weightSum="2">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <RelativeLayout
+                    android:layout_weight="0.3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/post_imgblackheartlike"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/likeblackicon"
-                android:layout_alignParentStart="true"
+                android:layout_gravity="start"
                 android:padding="5dp"
                 android:visibility="visible"/>
+
 
                 <ImageView
                     android:id="@+id/post_imgblueheartlike"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/redhearticon"
-                    android:layout_alignParentStart="true"
+                    android:layout_gravity="start"
                     android:padding="5dp"
                     android:visibility="invisible"/>
 
+                </RelativeLayout>
+
+
             <ImageView
+                android:layout_weight="0.3"
                 android:id="@+id/post_imgcomment"
-                android:layout_width="40dp"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:src="@drawable/commenticon"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentStart="true"
+                android:layout_gravity="center"
                 android:padding="5dp"/>
 
 
 
             <ImageView
+                android:layout_weight="0.3"
                 android:id="@+id/post_imgshare"
-                android:layout_width="40dp"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:src="@drawable/shareicon"
-                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
                 android:padding="5dp"/>
 
-            </RelativeLayout>
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_weight="1"

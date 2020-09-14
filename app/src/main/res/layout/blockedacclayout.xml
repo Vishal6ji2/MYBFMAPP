@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/blocked_profileimg"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/profilefive"/>
+
+    <TextView
+        android:id="@+id/blocked_txtname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:text="Mia shroff"
+        android:textSize="16sp"
+        android:singleLine="false"
+        android:layout_toEndOf="@id/blocked_profileimg"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/blocked_btnunblock"
+        android:gravity="start"
+        android:layout_marginStart="2dp"/>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/blocked_btnunblock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unblock"
+        android:backgroundTint="@color/whitecolor"
+        android:textColor="@color/colorPrimary"
+        app:strokeWidth="0.5dp"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:textAllCaps="false"
+        android:layout_alignParentEnd="true"
+        app:strokeColor="@color/colorPrimary"
+        app:cornerRadius="5dp"
+        android:layout_margin="5dp"/>
+
+</RelativeLayout>

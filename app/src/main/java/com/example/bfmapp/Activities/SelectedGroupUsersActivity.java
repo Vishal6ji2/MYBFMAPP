@@ -62,12 +62,15 @@ public class SelectedGroupUsersActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 chatsSuitcaseArrayList.clear();
+
+                selectedGroupAdapter.notifyDataSetChanged();
 //                txtselectednumbers.setText("");
                 Toast.makeText(SelectedGroupUsersActivity.this, "Work in process", Toast.LENGTH_SHORT).show();
             }
         });
 
         Bundle bundle = getIntent().getExtras();
+        chatsSuitcaseArrayList.clear();
 
         if (bundle != null) {
             chatsSuitcaseArrayList = bundle.getParcelableArrayList("arraylist");
@@ -101,5 +104,10 @@ public class SelectedGroupUsersActivity extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        chatsSuitcaseArrayList.clear();
+        selectedGroupAdapter.notifyDataSetChanged();
+        super.onBackPressed();
+    }
 }

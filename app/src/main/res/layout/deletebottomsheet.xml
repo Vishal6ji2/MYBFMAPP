@@ -5,10 +5,6 @@
     android:id="@+id/lldeletebottomsheet"
     android:padding="5dp">
 
-
-
-
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

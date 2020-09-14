@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AccountSettingActivity"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/accounts_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/accounts_txtactivities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your Activity"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/accounts_txtdetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Personal Details"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/accounts_txthistory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search History"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/accounts_txtlanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Language"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/accounts_txtverification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Request Verification"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/accounts_txtlinked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Linked Accounts"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/accounts_txtdelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete Account"
+        android:textSize="17sp"
+        android:padding="15dp"
+        android:textColor="@android:color/black"
+        android:background="?attr/selectableItemBackground"/>
+
+</LinearLayout>

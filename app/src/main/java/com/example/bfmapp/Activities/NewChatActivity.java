@@ -2,6 +2,7 @@ package com.example.bfmapp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +30,8 @@ public class NewChatActivity extends AppCompatActivity {
     LinearLayout createlayout;
 
     ArrayList<NewChatsSuitcase> newChatsSuitcaseArrayList = new ArrayList<>();
+
+    NewChatsAdapter chatsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +64,10 @@ public class NewChatActivity extends AppCompatActivity {
         addData("Jackquline",R.drawable.profiletwo);
 
 
+        chatsAdapter = new NewChatsAdapter(this,newChatsSuitcaseArrayList);
+
         newchatrecyclerview.setLayoutManager(new LinearLayoutManager(this));
-        newchatrecyclerview.setAdapter(new NewChatsAdapter(this,newChatsSuitcaseArrayList));
+        newchatrecyclerview.setAdapter(chatsAdapter);
         newchatrecyclerview.setHasFixedSize(true);
         newchatrecyclerview.setNestedScrollingEnabled(false);
 
@@ -108,6 +113,22 @@ public class NewChatActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nc_searchmenu){
 
+                SearchView searchView = (SearchView) item.getActionView();
+
+                searchView.setQueryHint("search here...");
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+
+                        chatsAdapter.getFilter().filter(newText);
+                        return false;
+                    }
+                });
             Toast.makeText(this, "Work in Process", Toast.LENGTH_SHORT).show();
         }
 

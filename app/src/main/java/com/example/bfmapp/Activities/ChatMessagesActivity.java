@@ -6,31 +6,52 @@ import androidx.appcompat.widget.AppCompatCheckBox;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.media.MediaRecorder;
 import android.os.Bundle;
+import android.os.Environment;
+import android.text.Editable;
 import android.text.Layout;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bfmapp.Bottomsheetdialog;
+import com.example.bfmapp.OtherUsersProfileActivity;
 import com.example.bfmapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.mikhaellopez.circularimageview.CircularImageView;
+import com.skyfishjy.library.RippleBackground;
+
+import java.io.IOException;
+
+import hani.momanii.supernova_emoji_library.Actions.EmojIconActions;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconEditText;
+import hani.momanii.supernova_emoji_library.Helper.EmojiconTextView;
 
 public class ChatMessagesActivity extends AppCompatActivity {
+
+    RelativeLayout rootlayout;
 
     MaterialToolbar materialToolbar;
 
     ImageView emojiimg,attachfileimg,micimg,sendimg;
 
-    EditText edtmsg;
+    EmojiconEditText edtmsg;
+
+    EmojIconActions iconActions;
 
     CircularImageView chatterprofileimg;
 
@@ -38,17 +59,31 @@ public class ChatMessagesActivity extends AppCompatActivity {
 
     RecyclerView cmrecyclerview;
 
-    BottomSheetDialog bottomSheetDialog,bottomSheetDialog1;
+    EmojiconTextView textView;
+
+    BottomSheetDialog bottomSheetDialog;
 
     LinearLayout llmsgbottomsheetlayout;
 
+    MediaRecorder recorder;
 
+    String fileName = null;
+    String username;
+    int userprofile;
+
+    RippleBackground rippleBackground ;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_messages);
 
         initviews();
+
+        rippleBackground = findViewById(R.id.ripplebackground);
+
+        textView = findViewById(R.id.textview);
 
         setSupportActionBar(materialToolbar);
 
@@ -65,8 +100,8 @@ public class ChatMessagesActivity extends AppCompatActivity {
         if (getIntent()!=null){
 
             if (getIntent().getStringExtra("chattername")!=null ) {
-                String username = getIntent().getStringExtra("chattername");
-                int userprofile = getIntent().getIntExtra("chatterimg", R.drawable.passwordicon);
+                username = getIntent().getStringExtra("chattername");
+                userprofile = getIntent().getIntExtra("chatterimg", R.drawable.passwordicon);
 
                 chattername.setText(username);
                 chatterprofileimg.setImageResource(userprofile);
@@ -74,6 +109,132 @@ public class ChatMessagesActivity extends AppCompatActivity {
             }
         }
 
+        edtmsg.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                if (!edtmsg.getText().toString().isEmpty()) {
+                    micimg.setVisibility(View.GONE);
+                    sendimg.setVisibility(View.VISIBLE);
+                }else {
+                    micimg.setVisibility(View.VISIBLE);
+                    sendimg.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        chattername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChatMessagesActivity.this, OtherUsersProfileActivity.class);
+                intent.putExtra("username",username);
+                intent.putExtra("userimg",userprofile);
+
+                startActivity(intent);
+            }
+        });
+
+        chatterprofileimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChatMessagesActivity.this, OtherUsersProfileActivity.class);
+                intent.putExtra("username",username);
+                intent.putExtra("userimg",userprofile);
+
+                startActivity(intent);
+            }
+        });
+
+        iconActions = new EmojIconActions(this,rootlayout,edtmsg,emojiimg);
+        iconActions.ShowEmojIcon();
+        iconActions.setIconsIds(R.drawable.ic_action_keyboard,R.drawable.emojiicon);
+
+        iconActions.setKeyboardListener(new EmojIconActions.KeyboardListener() {
+            @Override
+            public void onKeyboardOpen() {
+
+//                Toast.makeText(ChatMessagesActivity.this, "Open", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onKeyboardClose() {
+
+//                Toast.makeText(ChatMessagesActivity.this, "Close", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        sendimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.setText(edtmsg.getText().toString());
+            }
+        });
+
+        fileName = Environment.getExternalStorageDirectory().getAbsolutePath();
+        fileName += "/recorded_audio.mp3";
+
+        micimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ChatMessagesActivity.this, "Hold mic to record audio", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        micimg.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction()){
+
+                    case MotionEvent.ACTION_DOWN:
+                        textView.setText("Start Recording");
+                        startRecording();
+                        rippleBackground.startRippleAnimation();
+
+                        return true;
+
+                    case MotionEvent.ACTION_UP:
+                        textView.setText("Stop recording");
+                        stopRecording();
+                        rippleBackground.stopRippleAnimation();
+                        return true;
+                }
+
+                return false;
+            }
+        });
+    }
+
+    private void startRecording() {
+        recorder = new MediaRecorder();
+        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        recorder.setOutputFile(fileName);
+        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            recorder.prepare();
+        } catch (IOException e) {
+//            Log.e(LOG_TAG, "prepare() failed");
+        }
+
+        recorder.start();
+    }
+
+    private void stopRecording() {
+        recorder.stop();
+        recorder.release();
+        recorder = null;
     }
 
     @Override
@@ -156,6 +317,8 @@ public class ChatMessagesActivity extends AppCompatActivity {
     }
 
     private void initviews() {
+
+        rootlayout = findViewById(R.id.cm_rootlayout);
 
         llmsgbottomsheetlayout = findViewById(R.id.llmsgbottomsheet);
 

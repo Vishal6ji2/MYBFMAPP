@@ -1,6 +1,7 @@
 package com.example.bfmapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bfmapp.Activities.ProposalsActivity;
 import com.example.bfmapp.R;
 import com.example.bfmapp.Suitcases.AllFragSuitcase;
 import com.mikhaellopez.circularimageview.CircularImageView;
@@ -33,7 +35,7 @@ public class AllFragAdapter extends RecyclerView.Adapter<AllFragAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
 
         holder.profileimg.setImageResource(arrayList.get(position).profleimg);
 
@@ -41,6 +43,16 @@ public class AllFragAdapter extends RecyclerView.Adapter<AllFragAdapter.ViewHold
 
         holder.txtnoties.setText(arrayList.get(position).noties);
         holder.txttime.setText(arrayList.get(position).time);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProposalsActivity.class);
+                intent.putExtra("username",arrayList.get(position).username);
+                intent.putExtra("userprofileimg",arrayList.get(position).profleimg);
+                context.startActivity(intent);
+            }
+        });
 
     }
 

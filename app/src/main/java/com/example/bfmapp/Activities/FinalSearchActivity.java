@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -72,7 +73,8 @@ public class FinalSearchActivity extends AppCompatActivity {
         filterimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FinalSearchActivity.this, "Filter work in process", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(FinalSearchActivity.this,FilterArtistActivity.class));
+//                Toast.makeText(FinalSearchActivity.this, "Filter work in process", Toast.LENGTH_SHORT).show();
             }
         });
 

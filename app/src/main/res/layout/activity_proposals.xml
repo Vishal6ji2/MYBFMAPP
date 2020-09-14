@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ProposalsActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/prop_barlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/prop_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/menus"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/prop_barlayout">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/prop_userinfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/prop_profileimg"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/profilefour"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/prop_profileimg">
+
+    <TextView
+        android:id="@+id/prop_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="17sp"
+        android:text="Dimple Khurana" />
+
+    <TextView
+        android:id="@+id/prop_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2h ago"
+        android:layout_marginStart="10dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/prop_txtsubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book Printing Collaboration"
+        android:layout_below="@id/prop_userinfo"
+        android:textSize="16sp"
+        android:textColor="@color/colorPrimary"
+        android:padding="20dp"/>
+
+
+    <com.codesgood.views.JustifiedTextView
+        android:id="@+id/prop_txtproposal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I have read your blogs and they I have read your blogs and they are amazing are amazing.I have read I have read your blogs and they are amazing your blogs and they I have read your blogs and they are amazing are amazingI have read yourI have read yourI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazing blogs and they are amazing blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazingI have read your blogs and they are amazing"
+        android:layout_below="@id/prop_txtsubject"
+        android:textSize="17sp"
+        android:textColor="@color/colorPrimary"
+        android:lineSpacingExtra="2dp"
+        android:padding="20dp"/>
+
+    </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

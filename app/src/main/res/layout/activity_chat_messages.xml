@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:emojicon="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/cm_rootlayout"
     tools:context=".Activities.ChatMessagesActivity">
 
 
@@ -24,6 +26,7 @@
                 android:id="@+id/cm_chatterimg"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="?attr/selectableItemBackground"
                 android:src="@drawable/profilethree"/>
 
             <TextView
@@ -33,6 +36,7 @@
                 android:text="chattername"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:background="?attr/selectableItemBackground"
                 android:layout_marginStart="5dp"/>
 
 
@@ -53,7 +57,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/cm_sendmsglayout"
-        android:layout_below="@id/cm_lineone"/>
+        android:layout_below="@id/cm_lineone"
+        android:visibility="invisible"/>
+
+    <hani.momanii.supernova_emoji_library.Helper.EmojiconTextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:text="Hello emojis"
+        android:layout_below="@id/cm_lineone"
+        android:gravity="center"
+        emojicon:emojiconSize="18sp"
+        emojicon:emojiconUseSystemDefault="true"/>
 
     <LinearLayout
         android:id="@+id/cm_sendmsglayout"
@@ -63,22 +80,22 @@
         android:layout_alignParentBottom="true"
         android:weightSum="10"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="15dp"
         android:layout_marginBottom="5dp">
-
-
 
         <ImageView
             android:id="@+id/cm_emojiimg"
-            android:layout_weight="1"
+            android:layout_weight=".5"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:background="?attr/selectableItemBackground"
             android:src="@drawable/emojiicon"/>
 
-        <EditText
+        <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
             android:id="@+id/cm_edtmsg"
-            android:layout_weight="7"
+            android:layout_weight="8.5"
             android:layout_width="0dp"
+            emojicon:emojiconSize="28sp"
             android:layout_height="wrap_content"
             android:hint="send a message"
             android:inputType="text"
@@ -86,24 +103,42 @@
 
         <ImageView
             android:id="@+id/cm_attachimg"
-            android:layout_weight="1"
+            android:layout_weight=".5"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:background="?attr/selectableItemBackground"
             android:src="@drawable/attachfileicon"/>
+        
 
-        <ImageView
+        <com.skyfishjy.library.RippleBackground
+            android:id="@+id/ripplebackground"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            emojicon:rb_color="@android:color/black"
+            emojicon:rb_radius="30dp"
+            emojicon:rb_scale="4"
+            emojicon:rb_type="fillRipple"
+            emojicon:rb_rippleAmount="10">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/cm_micimg"
-            android:layout_weight="1"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/micicon"/>
+            android:layout_weight="1"
+            android:layout_centerInParent="true"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/micicon" />
+
+        </com.skyfishjy.library.RippleBackground>
 
         <ImageView
             android:id="@+id/cm_sendimg"
             android:layout_weight="1"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/sendicon"/>
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/sendicon"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

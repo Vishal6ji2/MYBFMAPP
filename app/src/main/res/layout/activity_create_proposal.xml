@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.CreateProposalActivity"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/cprop_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/propsalmenus"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To....."
+        android:textSize="17sp"
+        android:textColor="@color/colorPrimary"
+        android:padding="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/cprop_profileimg"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/profilethree"/>
+
+
+        <TextView
+            android:id="@+id/cprop_txtusername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tary Leaon"
+            android:layout_gravity="center"
+            android:gravity="start"
+            android:padding="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"/>
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/cprop_edtsubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Subject"
+        android:padding="10dp"
+        android:inputType="text|textMultiLine"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <EditText
+        android:id="@+id/cprop_edtwriteproposal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Write Proposal"
+        android:singleLine="false"
+        android:padding="10dp"
+        android:inputType="text|textMultiLine"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

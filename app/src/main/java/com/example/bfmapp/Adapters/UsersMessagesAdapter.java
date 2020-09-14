@@ -64,23 +64,6 @@ public class UsersMessagesAdapter extends RecyclerView.Adapter<UsersMessagesAdap
         }
     }
 
-    //process is running for messages layout left and right
-
-//    Process is running for messages
-
-//    @Override
-//    public int getItemViewType(int position) {
-////        firebaseAuth = FirebaseAuth.getInstance();
-////        firebaseUser = firebaseAuth.getCurrentUser();
-////        currentuser = firebaseUser.getEmail();
-//        Log.d("currentuser",currentuser);
-////        if (arrayList.get(position).sender.equals(currentuser)){
-//            Log.d("realuser",currentuser);
-//
-//            return msgrighttype;
-////        }else {
-////            return msglefttype;
-//        }
 }
 
 

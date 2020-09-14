@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.NotificationActivity">
+    tools:context=".Activities.NotificationActivity"
+    android:background="@android:color/white">
 
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/noti_barlayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/noti_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/menus">
-
+        app:menu="@menu/createproposalmenus">
 
     </com.google.android.material.appbar.MaterialToolbar>
 
@@ -44,6 +44,18 @@
         android:id="@+id/noti_viewpager2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/noti_tablayout"/>
+        android:layout_below="@id/noti_tablayout"
+        android:layout_above="@+id/timeline_bnv"/>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/timeline_bnv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bnvdesign"
+        app:itemTextColor="@drawable/bnvselector"
+        app:itemIconTint="@drawable/bnvselector"
+        app:menu="@menu/menus"/>
 
 </RelativeLayout>

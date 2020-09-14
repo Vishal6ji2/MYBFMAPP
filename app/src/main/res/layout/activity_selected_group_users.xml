@@ -9,7 +9,7 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?attr/actionBarSize"
         android:background="@android:color/transparent">
 
 
@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:text="Create"
                 android:gravity="end"
+                android:background="?attr/selectableItemBackground"
                 android:textColor="@color/colorPrimary"
                 android:textSize="17sp"/>
 

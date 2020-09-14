@@ -1,6 +1,7 @@
 package com.example.bfmapp.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.viewpager2.widget.ViewPager2;
@@ -15,10 +16,13 @@ import android.widget.Toast;
 import com.example.bfmapp.Adapters.ChatUsersAdapter;
 import com.example.bfmapp.Adapters.NotiTabAdapter;
 import com.example.bfmapp.Adapters.SearchTabAdapter;
+import com.example.bfmapp.CaptureAct;
 import com.example.bfmapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class SearchArtistActivity extends AppCompatActivity {
 
@@ -76,6 +80,12 @@ public class SearchArtistActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.sm_filter) {
+            IntentIntegrator integrator = new IntentIntegrator(SearchArtistActivity.this);
+            integrator.setCaptureActivity(CaptureAct.class);
+            integrator.setOrientationLocked(false);
+            integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+            integrator.setPrompt("Scanning code");
+            integrator.initiateScan();
             Toast.makeText(this, "filter", Toast.LENGTH_SHORT).show();
         } else if (item.getItemId() == R.id.sm_search) {
 
@@ -110,6 +120,21 @@ public class SearchArtistActivity extends AppCompatActivity {
 
         }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
+
+        if (result!=null){
+            if (result.getContents()!=null){
+                Toast.makeText(this, result.getContents(), Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(this, "No Result", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            super.onActivityResult(requestCode,resultCode,data);
+        }
+    }
 
     private void prepareViewpager(ViewPager2 viewPager2) {
 

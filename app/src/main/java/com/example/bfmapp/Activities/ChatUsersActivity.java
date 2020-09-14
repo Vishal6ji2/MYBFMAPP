@@ -17,7 +17,6 @@ import com.example.bfmapp.Adapters.ChatUsersAdapter;
 import com.example.bfmapp.R;
 import com.example.bfmapp.Suitcases.ChatUsersSuitcase;
 import com.google.android.material.appbar.MaterialToolbar;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 
@@ -31,6 +30,9 @@ public class ChatUsersActivity extends AppCompatActivity {
 
     ChatUsersAdapter chatUsersAdapter;
 
+    public static boolean isinActionmode = false;
+    public static ArrayList<ChatUsersSuitcase> selectedusersarraylist = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +42,11 @@ public class ChatUsersActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+        if (getSupportActionBar()!=null) {
+            getSupportActionBar().setTitle("Chats");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        getSupportActionBar().setTitle("Chat");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        }
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,13 +60,52 @@ public class ChatUsersActivity extends AppCompatActivity {
 
     }
 
+    public void prepareToolbar(int position){
+
+//        chatUsersAdapter.flag = 1;
+        toolbar.getMenu().clear();
+        toolbar.inflateMenu(R.menu.chatuserscontextualmenus);
+        isinActionmode = true;
+        chatUsersAdapter.notifyDataSetChanged();
+
+        if (getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+
+        prepareSelection(position);
+    }
+
+    public void prepareSelection(int position) {
+
+        if (!selectedusersarraylist.contains(usersSuitcaseArrayList.get(position))){
+            selectedusersarraylist.add(usersSuitcaseArrayList.get(position));
+            chatUsersAdapter.notifyDataSetChanged();
+        }else {
+            selectedusersarraylist.remove(usersSuitcaseArrayList.get(position));
+            chatUsersAdapter.notifyDataSetChanged();
+        }
+
+        updateViewcounter();
+    }
+
+    private void updateViewcounter() {
+        chatUsersAdapter.notifyDataSetChanged();
+        int counter = 0;
+        counter = selectedusersarraylist.size();
+        toolbar.setTitle(counter+" item(s) selected ");
+        chatUsersAdapter.notifyDataSetChanged();
+    }
+
     private void initRecyclerview() {
+
+        usersSuitcaseArrayList.clear();
+        selectedusersarraylist.clear();
 
         addData(R.drawable.profileone, "Mia Shroff", "I hope you find the best line", "2m");
         addData(R.drawable.profiletwo, "Alisa Katshow", "Best of luck", "1h");
         addData(R.drawable.profilethree, "Photographer freek", "There was time when i was use to what you know...", "2d");
         addData(R.drawable.profilefour, "ElinaFonser", "I hope you find the best line", "4d");
-        addData(R.drawable.profilefive, "James Cameron", "Let's do it", "1w");
+        addData(R.drawable.profilefive, "James Cameron", "Let's do itLet's do itLet's do itLet's do itLet's do itLet's do itLet's do itLet's do itLet's do itLet's do itLet's do itLet's do itLet's do itLet's do it", "1w");
 
 
         chatUsersAdapter = new ChatUsersAdapter(this, usersSuitcaseArrayList);
@@ -96,8 +138,8 @@ public class ChatUsersActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.chatusersmenu, menu);
 
+        getMenuInflater().inflate(R.menu.chatusersmenu, menu);
 
         return true;
     }
@@ -119,7 +161,6 @@ public class ChatUsersActivity extends AppCompatActivity {
                     return false;
                 }
 
-
                 @Override
                 public boolean onQueryTextChange(String newText) {
 
@@ -128,7 +169,48 @@ public class ChatUsersActivity extends AppCompatActivity {
                 }
             });
             Toast.makeText(this, "Search Click work in Progress", Toast.LENGTH_SHORT).show();
+
+        }else if (item.getItemId() == R.id.chatmenu_delete){
+            isinActionmode = false;
+            chatUsersAdapter.removedata(selectedusersarraylist);
+            clearActionMode();
+            chatUsersAdapter.notifyDataSetChanged();
+        }else if (item.getItemId() == R.id.chatmenu_selectall){
+            selectedusersarraylist.clear();
+            isinActionmode = true;
+
+            selectedusersarraylist.addAll(usersSuitcaseArrayList);
+
+            updateViewcounter();
+
+        }else if (item.getItemId() == android.R.id.home){
+            clearActionMode();
+            chatUsersAdapter.notifyDataSetChanged();
         }
         return true;
+    }
+
+    public void clearActionMode() {
+        ChatUsersAdapter.flag = 0;
+        isinActionmode = false;
+        toolbar.getMenu().clear();
+        toolbar.inflateMenu(R.menu.chatusersmenu);
+        if (getSupportActionBar()!=null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setTitle("Chats");
+        }
+        selectedusersarraylist.clear();
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (isinActionmode){
+            clearActionMode();
+            chatUsersAdapter.notifyDataSetChanged();
+        }else {
+            super.onBackPressed();
+        }
     }
 }

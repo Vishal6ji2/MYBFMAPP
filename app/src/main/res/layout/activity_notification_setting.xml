@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.NotificationSettingActivity"
+    android:orientation="vertical">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/notisetting_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/notisetting_pauseall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pause All"
+        android:checked="false"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/notisetting_likes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Likes"
+        android:checked="true"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/notisetting_comments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comments"
+        android:checked="true"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/notisetting_request"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Call Requests"
+        android:checked="false"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/notisetting_proposal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Proposal"
+        android:checked="true"
+        android:textSize="17sp"
+        app:showText="false"
+        android:textOn="On"
+        android:textOff="Off"
+        android:padding="15dp"
+        android:theme="@style/BrandedSwitch.control"
+        app:switchTextAppearance="@style/BrandedSwitch.text"
+        android:textColor="@color/colorPrimary"/>
+
+</LinearLayout>

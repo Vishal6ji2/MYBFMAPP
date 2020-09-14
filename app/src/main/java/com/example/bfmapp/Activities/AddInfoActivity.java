@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,9 +33,16 @@ public class AddInfoActivity extends AppCompatActivity {
 
     Button btnfinish;
 
-    Spinner spingender;
 
-    String dob = "",selectedgender = "";
+    String dob = "";
+
+    Spinner spincategory;
+    String selectcategory;
+
+    RadioGroup radioGroup;
+    RadioButton selectedgender;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,26 +54,25 @@ public class AddInfoActivity extends AppCompatActivity {
         spinneritems();
 
 
-        spingender.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        spincategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (spingender.getItemAtPosition(position).toString().equals("Gender")){
-                    selectedgender = "";
+                if (spincategory.getItemAtPosition(position).toString().equals("Select Who you are")){
+                    selectcategory = "";
 
                 }else {
-                   selectedgender = spingender.getItemAtPosition(position).toString();
+                    selectcategory = spincategory.getItemAtPosition(position).toString();
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
-                Toast.makeText(AddInfoActivity.this, "Please Select your Gender", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddInfoActivity.this, "Please Select your Category", Toast.LENGTH_SHORT).show();
 
             }
         });
-
 
         txtdob.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +81,8 @@ public class AddInfoActivity extends AppCompatActivity {
                 setDob();
             }
         });
+
+        selectedgender = radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
 
         btnfinish.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,8 +93,11 @@ public class AddInfoActivity extends AppCompatActivity {
                     Toast.makeText(AddInfoActivity.this, "Please enter your Username", Toast.LENGTH_SHORT).show();
                 }else if (dob.equals("")){
                     Toast.makeText(AddInfoActivity.this, "Please Select your Date of birth", Toast.LENGTH_SHORT).show();
-                }else if (selectedgender.equals("")){
-                    Toast.makeText(AddInfoActivity.this, "Please Select your Gender", Toast.LENGTH_SHORT).show();
+                }else if (selectedgender==null){
+                    Toast.makeText(AddInfoActivity.this, "Please select your Gender", Toast.LENGTH_SHORT).show();
+                    Log.d( "gender",  selectedgender.getText().toString());
+                }else if (selectcategory.equals("")){
+                    Toast.makeText(AddInfoActivity.this, "Please Select your Category", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(AddInfoActivity.this, "Your details saved successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AddInfoActivity.this,SelectCategoryActivity.class));
@@ -95,6 +109,10 @@ public class AddInfoActivity extends AppCompatActivity {
 
     private void initviews() {
 
+        spincategory = findViewById(R.id.info_spincategories);
+
+        radioGroup = findViewById(R.id.info_radiogroup);
+
         edtname = findViewById(R.id.info_edtname);
         edtusername = findViewById(R.id.info_edtusername);
 
@@ -102,7 +120,6 @@ public class AddInfoActivity extends AppCompatActivity {
 
         btnfinish = findViewById(R.id.info_btnfinish);
 
-        spingender = findViewById(R.id.info_spingender);
     }
 
     private void setDob(){
@@ -124,18 +141,36 @@ public class AddInfoActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
+
     private void spinneritems(){
 
-        ArrayList<String> genderslist = new ArrayList<>();
-        genderslist.add(0,"Gender");
-        genderslist.add("Male");
-        genderslist.add("Female");
-        genderslist.add("Other");
+        ArrayList<String> categories = new ArrayList<>();
+        categories.add(0,"Select Who you are");
+        categories.add("Director");
+        categories.add("FilmMaker");
+        categories.add("Photography");
+        categories.add("VFX");
+        categories.add("Animation");
+        categories.add("Video Editing");
+        categories.add("Vlogging");
+        categories.add("CGI");
+        categories.add("Blogging");
+        categories.add("Science Fiction");
+        categories.add("Illustrator");
+        categories.add("3D Animation");
+        categories.add("Novels");
+        categories.add("Writing");
+        categories.add("Script Writing");
+        categories.add("2D Animation");
+        categories.add("Content Writing");
+        categories.add("Fiction");
+        categories.add("Photoshop");
+        categories.add("Others");
 
-        ArrayAdapter<String > genderadapter = new ArrayAdapter<>(AddInfoActivity.this,android.R.layout.simple_list_item_1,genderslist);
+        ArrayAdapter<String> categoryadapter = new ArrayAdapter<>(AddInfoActivity.this,android.R.layout.simple_list_item_1,categories);
 
-        genderadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categoryadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spingender.setAdapter(genderadapter);
+        spincategory.setAdapter(categoryadapter);
     }
 }

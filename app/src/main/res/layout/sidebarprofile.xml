@@ -2,113 +2,134 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_light"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    tools:context=".Activities.SideBarActivity"
+    android:gravity="center"
+    android:layout_gravity="center">
 
     <LinearLayout
         android:id="@+id/sidebar_userprofile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="2"
-        android:layout_marginTop="10dp">
+        android:padding="10dp"
+        android:weightSum="2">
 
-    <LinearLayout
-        android:id="@+id/sidebar_profile"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center">
+        <RelativeLayout
+            android:id="@+id/sidebar_profile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="0.8"
+            android:gravity="center">
+
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/sidebar_profileimg"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/profilefive"
+                android:background="?attr/selectableItemBackground"/>
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/verifiedicon"
+                android:layout_alignBottom="@id/sidebar_profileimg"
+                android:layout_alignEnd="@id/sidebar_profileimg"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_weight="1.0"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/sidebar_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alisa Coalson"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:background="?attr/selectableItemBackground"/>
+
+            <TextView
+                android:id="@+id/sidebar_viewprofile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Go to profile"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:textColor="@color/bluecolor"
+                android:background="?attr/selectableItemBackground"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="1dp"
+                android:background="@color/bluecolor"
+                android:gravity="center"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/verifiedicon"
-            android:layout_gravity="center"/>
-
-    <com.mikhaellopez.circularimageview.CircularImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:src="@drawable/profilefive"
-        android:outlineProvider="none"/>
-
-    <TextView
-        android:id="@+id/sidebar_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Alisa.eloquent"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:layout_gravity="center"/>
-
-        <TextView
-            android:id="@+id/sidebar_viewprofile"
-            android:layout_width="match_parent"
+            android:layout_weight=".2"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="view profile"
-            android:textSize="14sp"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:layout_gravity="center"/>
-
-
-        <TextView
-            android:layout_width="80dp"
-            android:layout_height="2dp"
-            android:background="@android:color/white"
-            android:layout_gravity="center"/>
+            android:src="@drawable/moonicon"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 
-    </LinearLayout>
-
-    <Space
-        android:id="@+id/sidebar_spaceone"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_below="@id/sidebar_userprofile"/>
 
     <TextView
         android:id="@+id/sidebar_lineone"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_margin="10dp"
-        android:background="@android:color/white"
+        android:background="@android:color/black"
         android:padding="5dp"
-        android:layout_below="@id/sidebar_spaceone"/>
+        android:layout_below="@id/sidebar_userprofile"/>
 
     <LinearLayout
         android:id="@+id/sidebar_menus"
         android:layout_below="@id/sidebar_lineone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_above="@+id/sidebar_linetwo">
 
 
         <LinearLayout
+            android:id="@+id/sidebar_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackground">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/settingicon"
-                android:padding="5dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Settings"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginStart="10dp"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/settingicon"/>
 
         </LinearLayout>
 
@@ -116,67 +137,80 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackground">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/savedicon"
-                android:padding="5dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Favourites"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="10dp"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/savedicon"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackground">
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Saved"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginStart="10dp"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/bookmarkedicon"/>
 
         </LinearLayout>
 
+
         <LinearLayout
+            android:id="@+id/sidebar_llmyqr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:padding="10dp">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/savedicon"
-                android:padding="5dp"/>
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackground">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="FAQ"
-                android:textColor="@android:color/white"
+                android:text="My QR code"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:layout_marginStart="10dp"/>
+                android:layout_marginStart="10dp"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/qrcodeicon"/>
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:padding="10dp">
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackground">
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/menushare"
-                android:padding="5dp"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Invite Friends"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
+                android:drawableStart="@drawable/shareblackicon"
                 android:textSize="18sp"
+                android:drawablePadding="20dp"
                 android:layout_marginStart="10dp"/>
 
         </LinearLayout>
@@ -184,16 +218,38 @@
 
     </LinearLayout>
 
+
     <TextView
         android:id="@+id/sidebar_linetwo"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="70dp"
         android:layout_margin="10dp"
-        android:background="@android:color/white"
+        android:background="@android:color/black"
         android:padding="5dp"
-        android:layout_above="@id/sidebar_logout"/>
+        android:layout_above="@id/sidebar_faq"/>
 
+    <LinearLayout
+        android:id="@+id/sidebar_faq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_above="@id/sidebar_logout"
+        android:background="?attr/selectableItemBackground">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BFM FAQ"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_marginStart="10dp"
+            android:drawableStart="@drawable/faqicon"
+            android:drawablePadding="20dp"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/sidebar_logout"
@@ -201,43 +257,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:padding="20dp"
+        android:padding="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_alignParentBottom="true">
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/logout"
-            android:padding="5dp"/>
+        android:layout_above="@+id/timeline_bnv"
+        android:background="?attr/selectableItemBackground">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Log Out"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="10dp"
+            android:drawableStart="@drawable/logout"
+            android:drawablePadding="20dp"/>
 
     </LinearLayout>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/timeline_bnv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/bnvdesign"
+        app:itemTextColor="@drawable/bnvselector"
+        app:itemIconTint="@drawable/bnvselector"
+        app:menu="@menu/menus" />
 
-    <!--    <LinearLayout-->
-<!--        android:id="@+id/sidebar_layout"-->
-<!--        android:layout_below="@id/sidebar_lineone"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/menusrecyclerview"-->
-<!--            android:layout_width="250dp"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--    </LinearLayout>-->
-
-
-
-<!--    android:layout_below="@id/sidebar_layout"-->
 
 
 

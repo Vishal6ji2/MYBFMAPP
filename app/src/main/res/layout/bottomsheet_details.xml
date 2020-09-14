@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bottomsheetdesign"
-    android:id="@+id/bs_linearlayout">
+    android:id="@+id/bs_linearlayout"
+    android:background="@drawable/bottomsheetdesign">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:layout_marginBottom="5dp">
 
     <LinearLayout
         android:id="@+id/bs_llunfollow"
@@ -15,19 +22,12 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/unfollowicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Unfollow"
-            android:padding="5dp"
+            android:drawableStart="@drawable/unfollowicon"
+            android:drawablePadding="20dp"
             android:textSize="18sp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
@@ -37,10 +37,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#F7615F5F"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <LinearLayout
         android:id="@+id/bs_llblock"
@@ -49,19 +49,12 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/blockicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Block"
-            android:padding="5dp"
+            android:drawableStart="@drawable/blockicon"
+            android:drawablePadding="20dp"
             android:textSize="18sp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
@@ -71,10 +64,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#F7615F5F"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <LinearLayout
         android:id="@+id/bs_llmsguser"
@@ -83,21 +76,14 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/navigation"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Message User"
-            android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/messageusericon"
             android:layout_marginStart="10dp"
+            android:drawablePadding="20dp"
             android:textColor="@android:color/black"/>
 
 
@@ -105,10 +91,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#F7615F5F"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <LinearLayout
         android:id="@+id/bs_llrequest"
@@ -117,19 +103,12 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/contacticon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contact Request"
-            android:padding="5dp"
+            android:drawableStart="@drawable/contacticon"
+            android:drawablePadding="20dp"
             android:textSize="18sp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
@@ -139,10 +118,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#F7615F5F"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <LinearLayout
         android:id="@+id/bs_llproposal"
@@ -151,20 +130,13 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/proposalicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Send Proposal"
-            android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/proposalicon"
+            android:drawablePadding="20dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
 
@@ -173,10 +145,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#F7615F5F"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <LinearLayout
         android:id="@+id/bs_llreport"
@@ -186,19 +158,13 @@
         android:orientation="horizontal">
 
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/reporticon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Report"
-            android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/reporticon"
+            android:drawablePadding="20dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
 
@@ -207,10 +173,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#F7615F5F"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
     <LinearLayout
         android:id="@+id/bs_llshare"
@@ -220,18 +186,12 @@
         android:orientation="horizontal">
 
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/shareicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Share Profile"
-            android:padding="5dp"
+            android:drawableStart="@drawable/shareicon"
+            android:drawablePadding="20dp"
             android:textSize="18sp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
@@ -241,10 +201,11 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:background="#F7615F5F"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"/>
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"/>
 
+    </LinearLayout>
 
-</LinearLayout>
+</FrameLayout>

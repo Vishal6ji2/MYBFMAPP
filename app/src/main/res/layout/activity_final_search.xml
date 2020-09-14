@@ -31,7 +31,8 @@
         android:src="@drawable/filterimgicon"
         android:layout_below="@id/fs_toolbar"
         android:layout_alignParentEnd="true"
-        android:padding="10dp"/>
+        android:padding="12dp"
+        android:background="?attr/selectableItemBackground"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fs_recyclerview"

@@ -5,53 +5,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-
-    <LinearLayout
+<!--
+    <RelativeLayout
         android:id="@+id/customcomment_llone"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:padding="1dp">-->
 
     <com.mikhaellopez.circularimageview.CircularImageView
-        android:layout_weight="1"
         android:id="@+id/customcomment_profileimg"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/profileone"
-        android:layout_gravity="center"/>
+        android:src="@drawable/profileone"/>
 
 
     <TextView
         android:id="@+id/customcomment_username"
-        android:layout_weight="10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Elina Fonser"
         android:textSize="16sp"
         android:textColor="@color/colorPrimary"
-        android:layout_gravity="center"
-        android:layout_marginStart="5dp"/>
+        android:layout_alignTop="@id/customcomment_profileimg"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/customcomment_profileimg"
+        android:layout_toStartOf="@+id/customcomment_toolbar"/>
 
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:layout_weight="1"
         android:id="@+id/customcomment_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="end"
-        app:menu="@menu/commentmenus"/>
+        app:menu="@menu/commentmenus"
+        android:layout_alignParentEnd="true"/>
 
-    </LinearLayout>
+<!--    </RelativeLayout>-->
 
 
     <TextView
         android:id="@+id/customcomment_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/customcomment_llone"
+        android:layout_below="@id/customcomment_username"
+        android:layout_alignStart="@id/customcomment_username"
         android:text="2h"
-        android:layout_marginStart="40dp"
-        android:visibility="visible"/>
+        android:visibility="visible"
+        android:layout_toEndOf="@+id/customcomment_profileimg"
+        />
 
     <TextView
         android:id="@+id/customcomment_commentline"

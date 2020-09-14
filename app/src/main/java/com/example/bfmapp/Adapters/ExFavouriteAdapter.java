@@ -18,11 +18,10 @@ import java.util.ArrayList;
 public class ExFavouriteAdapter extends RecyclerView.Adapter<ExFavouriteAdapter.ViewHolder> {
     Context context;
     ArrayList<ExPopularSuitcase> favsuitcasearraylist = new ArrayList<>();
-    ViewPager2 viewPager2;
 
 
-    public ExFavouriteAdapter(Context context, ArrayList<ExPopularSuitcase> favsuitcasearraylist,ViewPager2 viewPager2) {
-        this.viewPager2 = viewPager2;
+
+    public ExFavouriteAdapter(Context context, ArrayList<ExPopularSuitcase> favsuitcasearraylist) {
         this.context = context;
         this.favsuitcasearraylist = favsuitcasearraylist;
     }
@@ -51,7 +50,7 @@ public class ExFavouriteAdapter extends RecyclerView.Adapter<ExFavouriteAdapter.
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            favimages = itemView.findViewById(R.id.expopular_img);
+            favimages = itemView.findViewById(R.id.exfavourite_img);
         }
     }
 }

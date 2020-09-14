@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.FilterArtistActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/filart_barlayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/filart_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/filart_menus"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/greycolor"
+        android:layout_above="@id/filart_applylayout"
+        android:layout_below="@id/filart_barlayout">
+
+
+        <TextView
+            android:id="@+id/filart_txtcategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categories"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:textColor="@color/bluecolor"
+            android:padding="20dp"
+            android:drawableEnd="@drawable/arrowrighticon"
+            android:layout_gravity="center"
+            android:background="?attr/selectableItemBackground"/>
+
+
+        <TextView
+            android:id="@+id/filart_txtfollowers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Followers"
+            android:textSize="15sp"
+            android:drawableEnd="@drawable/arrowrighticon"
+            android:gravity="center"
+            android:textColor="@color/bluecolor"
+            android:padding="20dp"
+            android:background="?attr/selectableItemBackground"/>
+
+
+        <TextView
+            android:id="@+id/filart_txtlocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:textColor="@color/bluecolor"
+            android:padding="20dp"
+            android:drawableEnd="@drawable/arrowrighticon"
+            android:layout_gravity="center"
+            android:background="?attr/selectableItemBackground"/>
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/filart_categoriesscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/filart_menus"
+        android:layout_above="@id/filart_applylayout"
+        android:layout_below="@id/filart_barlayout"
+        android:visibility="gone">
+
+    <LinearLayout
+        android:id="@+id/filart_categorieslayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Director"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Filmmaker"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Photography"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VFX"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Animation"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Video Editing"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vlogging"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CGI"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blogging"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Science Fiction"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Illuswtrator"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3D-Animation"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Novels"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Writing"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Script Writing"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2D-Animation"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Content Writing"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fiction"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Photoshop"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Others"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+    <ScrollView
+        android:id="@+id/filart_followersscrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/filart_menus"
+        android:layout_below="@id/filart_barlayout"
+        android:layout_above="@id/filart_applylayout"
+        android:visibility="gone">
+
+    <LinearLayout
+        android:id="@+id/filart_followerslayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:padding="10dp">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0    -    100"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="100    -    500"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="500    -    1k"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1k    -    10k"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10k    -    100k"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="100k    -    500k"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="500k    -    1m"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1m    -    10m"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="10m    -    50m"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="50m    -    100m"
+            android:padding="10dp"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="above 100m"
+            android:padding="10dp"/>
+
+
+    </LinearLayout>
+
+    </ScrollView>
+
+
+    <AutoCompleteTextView
+        android:id="@+id/filart_autoplace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/filart_menus"
+        android:layout_below="@+id/filart_barlayout"
+        android:hint="Search Location"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/searchicon"
+        android:layout_margin="2dp"
+        android:visibility="visible"/>
+
+
+    <RelativeLayout
+        android:id="@+id/filart_applylayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="@android:color/black">
+
+
+        <TextView
+            android:id="@+id/filart_txtcancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="@color/whitecolor"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_alignParentStart="true"
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackground"/>
+
+
+        <TextView
+            android:id="@+id/filart_txtapply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apply"
+            android:textColor="@color/whitecolor"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_alignParentEnd="true"
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackground"/>
+
+    </RelativeLayout>
+
+
+    </RelativeLayout>

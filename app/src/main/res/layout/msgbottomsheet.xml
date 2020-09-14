@@ -2,8 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bottomsheetdesign"
     android:id="@+id/llmsgbottomsheet">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bottomsheetdesign"
+        android:backgroundTint="@android:color/white">
 
     <LinearLayout
         android:id="@+id/bschat_llsearchmsg"
@@ -12,20 +19,14 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/searchicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Search message"
             android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/searchicon"
+            android:drawablePadding="20dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
 
@@ -39,20 +40,14 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/blockicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Block"
             android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/blockicon"
+            android:drawablePadding="20dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
 
@@ -66,20 +61,14 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/muteicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Mute message"
             android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/muteicon"
+            android:drawablePadding="20dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
 
@@ -93,20 +82,14 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/reporticon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Report"
             android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/reporticon"
+            android:drawablePadding="20dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
 
@@ -121,19 +104,14 @@
         android:orientation="horizontal">
 
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/shareicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Share Profile"
             android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/shareicon"
+            android:drawablePadding="20dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
 
@@ -147,23 +125,19 @@
         android:padding="10dp"
         android:orientation="horizontal">
 
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:src="@drawable/deleteicon"
-            android:padding="2dp"/>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Delete Chat"
             android:padding="5dp"
             android:textSize="18sp"
+            android:drawableStart="@drawable/deleteicon"
+            android:drawablePadding="20dp"
             android:layout_marginStart="10dp"
             android:textColor="@android:color/black"/>
 
+
+    </LinearLayout>
 
     </LinearLayout>
 
