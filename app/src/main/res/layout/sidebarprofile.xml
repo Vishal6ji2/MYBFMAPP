@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     tools:context=".Activities.SideBarActivity"
-    android:gravity="center"
-    android:layout_gravity="center">
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:layout_marginTop="20dp">
 
     <LinearLayout
         android:id="@+id/sidebar_userprofile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:weightSum="2">
 
         <RelativeLayout
@@ -21,14 +21,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_weight="0.8"
+            android:layout_weight="0.6"
             android:gravity="center">
 
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/sidebar_profileimg"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:src="@drawable/profilefive"
                 android:background="?attr/selectableItemBackground"/>
 
@@ -44,7 +44,7 @@
 
 
         <LinearLayout
-            android:layout_weight="1.0"
+            android:layout_weight="0.8"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="Alisa Coalson"
                 android:gravity="center"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:padding="5dp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
@@ -99,17 +99,14 @@
         android:layout_height="2dp"
         android:layout_margin="10dp"
         android:background="@android:color/black"
-        android:padding="5dp"
-        android:layout_below="@id/sidebar_userprofile"/>
+        android:padding="5dp"/>
 
     <LinearLayout
         android:id="@+id/sidebar_menus"
-        android:layout_below="@id/sidebar_lineone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_above="@+id/sidebar_linetwo">
+        android:padding="10dp">
 
 
         <LinearLayout
@@ -154,6 +151,7 @@
 
 
         <LinearLayout
+            android:id="@+id/sidebar_llsaved"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -219,15 +217,23 @@
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/sidebar_linetwo"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_marginTop="70dp"
-        android:layout_margin="10dp"
-        android:background="@android:color/black"
-        android:padding="5dp"
-        android:layout_above="@id/sidebar_faq"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:layout_marginBottom="10dp">
+
+
+        <TextView
+            android:id="@+id/sidebar_linetwo"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="70dp"
+            android:layout_margin="10dp"
+            android:background="@android:color/black"
+            android:padding="5dp"/>
 
     <LinearLayout
         android:id="@+id/sidebar_faq"
@@ -235,7 +241,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:layout_above="@id/sidebar_logout"
         android:background="?attr/selectableItemBackground">
 
 
@@ -259,7 +264,6 @@
         android:layout_gravity="center"
         android:padding="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_above="@+id/timeline_bnv"
         android:background="?attr/selectableItemBackground">
 
         <TextView
@@ -274,6 +278,9 @@
 
     </LinearLayout>
 
+
+    </LinearLayout>
+<!--
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/timeline_bnv"
         android:layout_width="match_parent"
@@ -282,9 +289,9 @@
         android:background="@drawable/bnvdesign"
         app:itemTextColor="@drawable/bnvselector"
         app:itemIconTint="@drawable/bnvselector"
-        app:menu="@menu/menus" />
+        app:menu="@menu/menus" />-->
 
 
 
 
-</RelativeLayout>
+</LinearLayout>
