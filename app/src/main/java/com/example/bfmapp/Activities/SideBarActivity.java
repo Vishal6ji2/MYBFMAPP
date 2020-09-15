@@ -80,7 +80,7 @@ public class SideBarActivity extends AppCompatActivity {
             }
         });
 
-        bottomNavigationView.setSelectedItemId(R.id.bnav_sidebar);
+//        bottomNavigationView.setSelectedItemId(R.id.bnav_sidebar);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -102,9 +102,9 @@ public class SideBarActivity extends AppCompatActivity {
                     startActivity(new Intent(SideBarActivity.this,CreatePostActivity.class));
                     overridePendingTransition(0,0);
                     finish();
-                }else if (item.getItemId() == R.id.bnav_sidebar){
+                }/*else if (item.getItemId() == R.id.bnav_sidebar){
                     return true;
-                }
+                }*/
 
                 return true;
             }

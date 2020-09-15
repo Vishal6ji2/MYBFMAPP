@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,6 +42,7 @@ import java.util.Random;
 
 public class TimelinepostActivity extends AppCompatActivity /*implements DrawerAdapter.OnItemSelectedListener*/ {
 
+    DrawerLayout drawerLayout;
 
     /*private static final int POS_SETTINGS = 0;
     private static final int POS_SAVED = 1;
@@ -50,13 +53,13 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
     private String[] screenTitles;
     private Drawable[] screenIcons;
 */
-    private SlidingRootNav slidingRootNav;
+//    private SlidingRootNav slidingRootNav;
 
     MaterialToolbar toolbar;
 
     ImageView imgsearch;
     TextView edtartist;
-    CardView cardmsg;
+    CardView cardmsg,carddrawer;
 
     LinearLayout  searchbarlayout;
     RecyclerView timelinerecyclerview;
@@ -122,10 +125,10 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
                     startActivity(new Intent(TimelinepostActivity.this,CreatePostActivity.class));
                     overridePendingTransition(0,0);
                     finish();
-                }else if (item.getItemId() == R.id.bnav_sidebar){
+                }/*else if (item.getItemId() == R.id.bnav_sidebar){
                     startActivity(new Intent(TimelinepostActivity.this,SideBarActivity.class));
                     overridePendingTransition(0,0);
-                }
+                }*/
 
                 return true;
             }
@@ -145,19 +148,38 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
                .withSavedState(savedInstanceState)
                .withMenuLayout(R.layout.sidebarprofile)
                .inject();
-
+*/
        TextView viewprofile = findViewById(R.id.sidebar_viewprofile);
        TextView viewusername = findViewById(R.id.sidebar_username);
        LinearLayout viewsetting = findViewById(R.id.sidebar_setting);
        CircularImageView viewprofileimg = findViewById(R.id.sidebar_profileimg);
        LinearLayout viewlogout = findViewById(R.id.sidebar_logout);
+       LinearLayout myqr = findViewById(R.id.sidebar_llmyqr);
+       LinearLayout llsaved = findViewById(R.id.sidebar_llsaved);
 
 
-       viewprofile.setOnClickListener(new View.OnClickListener() {
+       llsaved.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               startActivity(new Intent(TimelinepostActivity.this,SavedPostsActivity.class));
+           }
+       });
+
+
+        myqr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TimelinepostActivity.this,YourQrCodeActivity.class));
+            }
+        });
+
+
+        viewprofile.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
                startActivity(new Intent(TimelinepostActivity.this,UserProfileActivity.class));
-               slidingRootNav.closeMenu();
+               closeDrawer(drawerLayout);
+//               slidingRootNav.closeMenu();
 
            }
        });
@@ -166,7 +188,8 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TimelinepostActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
+//                slidingRootNav.closeMenu();
 
             }
         });
@@ -175,7 +198,8 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TimelinepostActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
+//                slidingRootNav.closeMenu();
 
             }
         });
@@ -184,7 +208,8 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TimelinepostActivity.this,SettingsActivity.class));
-                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
+//                slidingRootNav.closeMenu();
             }
         });
 
@@ -193,10 +218,11 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(TimelinepostActivity.this,LoginActivity.class));
-                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
+//                slidingRootNav.closeMenu();
                 finish();
             }
-        });*/
+        });
 //       screenIcons = loadScreeicons();
 //       screenTitles = loadScreentitles();
 
@@ -211,7 +237,12 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
        drawerAdapter.setListener(this);
 */
 
-
+    carddrawer.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openDrawer(drawerLayout);
+        }
+    });
 
 
         addPosts("Seronmeza","50 likes","54 comments","Jodhpur,Rajasthan","54 minutes ago","The are of showing the video cinematically.The are of showing the video cinematically.The are of showing the video cinematically.",R.drawable.postone,R.drawable.profileone);
@@ -239,14 +270,27 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
 
 
     }
-  /*  private DrawerItem createItemFor(int position) {
-        return new SimplemenuItem(screenIcons[position], screenTitles[position])
-                .withIconTint(R.color.colorAccent)
-                .withTextTint((R.color.colorAccent))
-                .withSelectedItemIconTint((R.color.colorAccent))
-                .withSelectedTextTint((R.color.colorAccent));
+
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
-*/
+
+    public static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+
+
+    /*  private DrawerItem createItemFor(int position) {
+          return new SimplemenuItem(screenIcons[position], screenTitles[position])
+                  .withIconTint(R.color.colorAccent)
+                  .withTextTint((R.color.colorAccent))
+                  .withSelectedItemIconTint((R.color.colorAccent))
+                  .withSelectedTextTint((R.color.colorAccent));
+      }
+  */
   /*  private String[] loadScreentitles() {
         return getResources().getStringArray(R.array.sidebarmenunames);
     }
@@ -377,14 +421,15 @@ public class TimelinepostActivity extends AppCompatActivity /*implements DrawerA
         toolbar = findViewById(R.id.timeline_topbar);
 
         bottomNavigationView = findViewById(R.id.timeline_bnv);
-//        drawerLayout = findViewById(R.id.timeline_drawerlayout);
+
+        drawerLayout = findViewById(R.id.timeline_drawerlayout);
 
         imgsearch = findViewById(R.id.timeline_imgsearch);
 
         edtartist = findViewById(R.id.timeline_edtartist);
 
         cardmsg = findViewById(R.id.timeline_cardmsg);
-//        carddrawer = findViewById(R.id.timeline_carddrawer);
+        carddrawer = findViewById(R.id.timeline_carddrawer);
 
         timelinerecyclerview = findViewById(R.id.timeline_postrecyclerview);
 

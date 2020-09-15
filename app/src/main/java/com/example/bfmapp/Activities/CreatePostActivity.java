@@ -3,6 +3,9 @@ package com.example.bfmapp.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.SyncStateContract;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -20,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.anychart.scales.Linear;
 import com.example.bfmapp.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,6 +36,8 @@ import java.io.IOException;
 
 public class CreatePostActivity extends AppCompatActivity {
 
+    DrawerLayout drawerLayout;
+
     TextView posttxt;
 
     MaterialToolbar materialToolbar;
@@ -39,9 +46,11 @@ public class CreatePostActivity extends AppCompatActivity {
 
     ImageView postimg;
 
-    private SlidingRootNav slidingRootNav;
+//    private SlidingRootNav slidingRootNav;
 
     EditText edtcaption;
+
+    CardView carddrawer;
 
     BottomNavigationView bottomNavigationView;
 
@@ -54,17 +63,17 @@ public class CreatePostActivity extends AppCompatActivity {
 
         setSupportActionBar(materialToolbar);
 
-        getSupportActionBar().setTitle("Create post");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setTitle("Create post");
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         bottomNavigationView.setSelectedItemId(R.id.bnav_add);
 
-        materialToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        materialToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
         llgalleryvideo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +103,14 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
+        carddrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer(drawerLayout);
+            }
+        });
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -113,37 +130,60 @@ public class CreatePostActivity extends AppCompatActivity {
                     finish();
                 }else if (item.getItemId() == R.id.bnav_add){
                     return true;
-                }else if (item.getItemId() == R.id.bnav_sidebar){
+                }/*else if (item.getItemId() == R.id.bnav_sidebar){
                     startActivity(new Intent(CreatePostActivity.this,SideBarActivity.class));
                     overridePendingTransition(0,0);
-                }
+                }*/
 
                 return true;
             }
         });
 
 
-       /* slidingRootNav =  new SlidingRootNavBuilder(CreatePostActivity.this)
+/*
+        slidingRootNav =  new SlidingRootNavBuilder(CreatePostActivity.this)
                 .withToolbarMenuToggle(materialToolbar)
                 .withMenuOpened(false)
                 .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)
                 .withMenuLayout(R.layout.sidebarprofile)
                 .inject();
+*/
 
         TextView viewprofile = findViewById(R.id.sidebar_viewprofile);
         TextView viewusername = findViewById(R.id.sidebar_username);
         LinearLayout viewsetting = findViewById(R.id.sidebar_setting);
         CircularImageView viewprofileimg = findViewById(R.id.sidebar_profileimg);
         LinearLayout viewlogout = findViewById(R.id.sidebar_logout);
+        LinearLayout myqr = findViewById(R.id.sidebar_llmyqr);
+
+        LinearLayout llsaved = findViewById(R.id.sidebar_llsaved);
+
+
+        llsaved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreatePostActivity.this,SavedPostsActivity.class));
+            }
+        });
+
+
+        myqr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreatePostActivity.this,YourQrCodeActivity.class));
+                closeDrawer(drawerLayout);
+            }
+        });
 
 
         viewlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CreatePostActivity.this,LoginActivity.class));
-                slidingRootNav.closeMenu();
+//                slidingRootNav.closeMenu();
                 finish();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -151,8 +191,8 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CreatePostActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
-
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -160,8 +200,8 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CreatePostActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
-
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -169,8 +209,8 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CreatePostActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
-
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -178,14 +218,30 @@ public class CreatePostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(CreatePostActivity.this,SettingsActivity.class));
-                slidingRootNav.closeMenu();
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
-*/
 
     }
 
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+
+    public static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+
     private void initViews() {
+
+        drawerLayout = findViewById(R.id.timeline_drawerlayout);
+
+        carddrawer = findViewById(R.id.timeline_carddrawer);
 
         bottomNavigationView = findViewById(R.id.timeline_bnv);
 

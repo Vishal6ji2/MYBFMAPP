@@ -3,6 +3,8 @@ package com.example.bfmapp.Activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +39,8 @@ import java.util.ArrayList;
 public class ExploreActivity extends AppCompatActivity {
 
 
+    DrawerLayout drawerLayout;
+
     BottomNavigationView bottomNavigationView;
 
     RecyclerView favrecyclerview,popularrecyclerview,recartistrecyclerview;
@@ -45,13 +49,13 @@ public class ExploreActivity extends AppCompatActivity {
     ArrayList<ExPopularSuitcase> favsuitcasearraylist = new ArrayList<>();
     ArrayList<ExRecArtistSuitcase> recArtistSuitcaseArrayList = new ArrayList<>();
 
-    private SlidingRootNav slidingRootNav;
+//    private SlidingRootNav slidingRootNav;
 
     MaterialToolbar toolbar;
 
     ImageView imgsearch;
     TextView edtartist;
-    CardView cardmsg;
+    CardView cardmsg,carddrawer;
 
     LinearLayout searchbarlayout;
 
@@ -94,12 +98,20 @@ public class ExploreActivity extends AppCompatActivity {
                     startActivity(new Intent(ExploreActivity.this,CreatePostActivity.class));
                     overridePendingTransition(0,0);
                     finish();
-                }else if (item.getItemId() == R.id.bnav_sidebar){
+                }/*else if (item.getItemId() == R.id.bnav_sidebar){
                     startActivity(new Intent(ExploreActivity.this,SideBarActivity.class));
                     overridePendingTransition(0,0);
-                }
+                }*/
 
                 return true;
+            }
+        });
+
+
+        carddrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer(drawerLayout);
             }
         });
 
@@ -143,22 +155,40 @@ public class ExploreActivity extends AppCompatActivity {
                 .withContentClickableWhenMenuOpened(false)
                 .withSavedState(savedInstanceState)
                 .withMenuLayout(R.layout.sidebarprofile)
-                .inject();
+                .inject();*/
 
         TextView viewprofile = findViewById(R.id.sidebar_viewprofile);
         TextView viewusername = findViewById(R.id.sidebar_username);
         LinearLayout viewsetting = findViewById(R.id.sidebar_setting);
         CircularImageView viewprofileimg = findViewById(R.id.sidebar_profileimg);
         LinearLayout viewlogout = findViewById(R.id.sidebar_logout);
+        LinearLayout myqr = findViewById(R.id.sidebar_llmyqr);
+
+        LinearLayout llsaved = findViewById(R.id.sidebar_llsaved);
 
 
+        llsaved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ExploreActivity.this,SavedPostsActivity.class));
+            }
+        });
+
+        myqr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ExploreActivity.this,YourQrCodeActivity.class));
+                closeDrawer(drawerLayout);
+            }
+        });
 
         viewlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExploreActivity.this,LoginActivity.class));
-                slidingRootNav.closeMenu();
+//                slidingRootNav.closeMenu();
                 finish();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -166,8 +196,8 @@ public class ExploreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExploreActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
-
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -175,8 +205,8 @@ public class ExploreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExploreActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
-
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -184,8 +214,8 @@ public class ExploreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExploreActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
-
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -193,11 +223,23 @@ public class ExploreActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ExploreActivity.this,SettingsActivity.class));
-                slidingRootNav.closeMenu();
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
-*/
     }
+
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+
+    public static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
 
     private void Openpopularrecyclerview() {
 
@@ -305,6 +347,10 @@ public class ExploreActivity extends AppCompatActivity {
 
 
     private void initviews() {
+
+        carddrawer = findViewById(R.id.timeline_carddrawer);
+
+        drawerLayout = findViewById(R.id.timeline_drawerlayout);
 
         bottomNavigationView = findViewById(R.id.timeline_bnv);
 

@@ -86,7 +86,7 @@ public class YourQrCodeActivity extends AppCompatActivity {
                 for (int x = 0; x < width; x++) {
                     //pixels[offset + x] = matrix.get(x, y) ? BLACK : WHITE;
                     pixels[offset + x] = matrix.get(x, y) ?
-                            ResourcesCompat.getColor(getResources(), R.color.bluecolor, null) : WHITE;
+                            ResourcesCompat.getColor(getResources(), R.color.colorPrimaryDark, null) : WHITE;
                 }
             }
 

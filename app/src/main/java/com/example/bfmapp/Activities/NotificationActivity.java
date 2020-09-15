@@ -2,6 +2,9 @@ package com.example.bfmapp.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
@@ -37,9 +40,13 @@ public class NotificationActivity extends AppCompatActivity {
 
     MaterialToolbar materialToolbar;
 
-    private SlidingRootNav slidingRootNav;
+//    private SlidingRootNav slidingRootNav;
+
+    DrawerLayout drawerLayout;
 
     BottomNavigationView bottomNavigationView;
+
+    CardView carddrawer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +57,14 @@ public class NotificationActivity extends AppCompatActivity {
 
         setSupportActionBar(materialToolbar);
 
-        getSupportActionBar().setTitle("Notifications");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        materialToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        materialToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
         prepareViewpager(viewPager2);
 
@@ -82,10 +88,10 @@ public class NotificationActivity extends AppCompatActivity {
                     startActivity(new Intent(NotificationActivity.this,CreatePostActivity.class));
                     overridePendingTransition(0,0);
                     finish();
-                }else if (item.getItemId() == R.id.bnav_sidebar){
+                }/*else if (item.getItemId() == R.id.bnav_sidebar){
                     startActivity(new Intent(NotificationActivity.this,SideBarActivity.class));
                     overridePendingTransition(0,0);
-                }
+                }*/
 
                 return true;
             }
@@ -98,6 +104,7 @@ public class NotificationActivity extends AppCompatActivity {
                 .withSavedState(savedInstanceState)
                 .withMenuLayout(R.layout.sidebarprofile)
                 .inject();
+*/
 
 
         TextView viewprofile = findViewById(R.id.sidebar_viewprofile);
@@ -105,13 +112,40 @@ public class NotificationActivity extends AppCompatActivity {
         LinearLayout viewsetting = findViewById(R.id.sidebar_setting);
         CircularImageView viewprofileimg = findViewById(R.id.sidebar_profileimg);
         LinearLayout viewlogout = findViewById(R.id.sidebar_logout);
+        LinearLayout myqr = findViewById(R.id.sidebar_llmyqr);
 
+        LinearLayout llsaved = findViewById(R.id.sidebar_llsaved);
+
+
+        llsaved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(NotificationActivity.this,SavedPostsActivity.class));
+            }
+        });
+
+        carddrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDrawer(drawerLayout);
+            }
+        });
+
+
+        myqr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(NotificationActivity.this,YourQrCodeActivity.class));
+                closeDrawer(drawerLayout);
+            }
+        });
 
         viewlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationActivity.this,LoginActivity.class));
-                slidingRootNav.closeMenu();
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
                 finish();
             }
         });
@@ -120,7 +154,8 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
 
             }
         });
@@ -129,7 +164,8 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
 
             }
         });
@@ -138,8 +174,8 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationActivity.this,UserProfileActivity.class));
-                slidingRootNav.closeMenu();
-
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
 
@@ -147,11 +183,22 @@ public class NotificationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NotificationActivity.this,SettingsActivity.class));
-                slidingRootNav.closeMenu();
+//                slidingRootNav.closeMenu();
+                closeDrawer(drawerLayout);
             }
         });
-*/
+    }
 
+
+    public static void closeDrawer(DrawerLayout drawerLayout) {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+    }
+
+
+    public static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
     }
 
 
@@ -182,6 +229,12 @@ public class NotificationActivity extends AppCompatActivity {
     }
 
     private void initviews() {
+
+
+
+        carddrawer = findViewById(R.id.timeline_carddrawer);
+
+        drawerLayout = findViewById(R.id.timeline_drawerlayout);
 
         bottomNavigationView = findViewById(R.id.timeline_bnv);
 
